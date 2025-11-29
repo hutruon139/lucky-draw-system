@@ -65,7 +65,7 @@ export function PrizeFlowManager({ children }) {
 
   const nextDraw = () => {
     setCurrentParticipant(null);
-    setIsSpinning(true);
+    setIsSpinning(false);
   };
 
   const resetDraws = useCallback(() => {
