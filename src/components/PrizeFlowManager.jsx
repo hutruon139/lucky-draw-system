@@ -77,7 +77,6 @@ export function PrizeFlowManager({ children }) {
   }, []);
 
   useEffect(() => {
-    if (!import.meta.env.DEV) return undefined;
     const handler = (event) => {
       if (event.key?.toLowerCase() === "r") {
         event.preventDefault();

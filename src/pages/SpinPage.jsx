@@ -12,6 +12,7 @@ export default function SpinPage() {
     currentPrize,
     prizeQueue,
     currentPrizeIndex,
+    resetDraws,
   } = usePrizeFlow();
   const [frozenNumber, setFrozenNumber] = useState(null);
   const [pendingNavigation, setPendingNavigation] = useState(false);
@@ -79,6 +80,21 @@ export default function SpinPage() {
             textClass="text-slate-800"
           />
         </div>
+        {!currentPrize && prizeQueue.length > 0 && (
+          <div className="mx-auto flex max-w-lg flex-col gap-3 sm:flex-row sm:items-center sm:justify-center">
+            <ActionButton
+              label="RESET (TEST)"
+              onClick={() => {
+                resetDraws();
+                setFrozenNumber(null);
+                setPendingNavigation(false);
+              }}
+              disabled={isSpinning}
+              gradient="from-rose-200 via-rose-100 to-rose-200"
+              textClass="text-rose-900"
+            />
+          </div>
+        )}
       </div>
     </div>
   );
