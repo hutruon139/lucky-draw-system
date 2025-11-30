@@ -20,3 +20,39 @@ body {
 .card {
   @apply rounded-xl border border-slate-800 bg-slate-800/50 shadow-lg backdrop-blur;
 }
+
+/* THIS BLOCK IS UNUSED — SAFE TO DELETE
+@keyframes reel-spin {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(calc(-1 * var(--reel-item-height, 80px) * 50)); 
+  }
+}
+*/
+
+.reel-strip {
+  display: flex;
+  flex-direction: column;
+}
+
+/* PHASE 1 — infinite spin */
+.reel-spin {
+  animation: reel-scroll 0.45s linear infinite;
+}
+
+.reel-stop {
+  animation: none;
+}
+
+@keyframes reel-scroll {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(
+      calc(-1 * var(--reel-item-height, 100px) * var(--reel-strip-length, 10))
+    );
+  }
+}
