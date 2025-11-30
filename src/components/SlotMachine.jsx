@@ -37,17 +37,17 @@ export default function SlotMachine({
       <div className="absolute inset-x-6 bottom-3 h-[10px] rounded-full bg-black/30 blur-md" />
       <div
         className="
-    relative 
+    relative
     flex flex-nowrap gap-3
-    rounded-[28px] border border-amber-100/50 
-    bg-gradient-to-b from-amber-50/70 via-white/70 to-amber-50/70 
-    px-6 py-6 
+    rounded-[28px] border border-amber-100/50
+    bg-gradient-to-b from-amber-50/70 via-white/70 to-amber-50/70
+    px-6 py-6
     shadow-[inset_0_2px_6px_rgba(255,255,255,0.6),inset_0_-8px_18px_rgba(0,0,0,0.25)]
   "
       >
         {digits.map((digit, idx) => (
           <Reel
-            key={`${digit}-${idx}`}
+            key={idx}
             targetDigit={parseInt(digit, 10) || 0}
             spinning={isSpinning}
             delay={stopDelays[idx]}
