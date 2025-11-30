@@ -7,6 +7,7 @@ const DIGITS = Array.from({ length: REPEAT * 10 }, (_, i) => i % 10);
 export default function Reel({ targetDigit = 0, spinning, delay = 0 }) {
   const stripRef = useRef(null);
   const tickTimerRef = useRef(null);
+  const wasSpinningRef = useRef(false);
 
   useEffect(() => {
     const node = stripRef.current;
@@ -21,73 +22,127 @@ export default function Reel({ targetDigit = 0, spinning, delay = 0 }) {
 
     const startSpin = () => {
       clearTick();
-      node.style.transition = "none";
-      node.style.animation = "";
-      node.style.transform = "";
+      // Only reset transform if we're not already spinning (avoid resetting mid-spin)
+      if (!wasSpinningRef.current) {
+        node.style.transition = "none";
+        node.style.animation = "";
+        node.style.transform = "";
+      }
       node.classList.add("reel-spin");
+      wasSpinningRef.current = true;
     };
 
     const stopSpin = () => {
       clearTick();
 
-      // Freeze at current animation position
-      const cs = getComputedStyle(node);
-      const matrix = new DOMMatrixReadOnly(cs.transform);
-      const offsetY = matrix.m42;
-      node.classList.remove("reel-spin");
-      node.style.animation = "none";
-      node.style.transition = "none";
-      node.style.transform = `translateY(${offsetY}px)`;
+      // Use double requestAnimationFrame to ensure we read position after browser paints
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          // Read position while animation is still active (BEFORE removing the class)
+          const cs = getComputedStyle(node);
+          let offsetY = 0;
 
-      // Calculate current working index (not normalized to strip length)
-      let workingIndex = Math.round(-offsetY / ITEM_HEIGHT);
-      const currentDigit = ((workingIndex % 10) + 10) % 10;
-      const target = targetDigit % 10;
+          // Try to get transform from computed style
+          if (cs.transform && cs.transform !== "none") {
+            try {
+              const matrix = new DOMMatrixReadOnly(cs.transform);
+              offsetY = matrix.m42;
+            } catch (e) {
+              // Fallback: parse from transform string
+              const match = cs.transform.match(/translateY\(([^)]+)\)/);
+              if (match) {
+                offsetY = parseFloat(match[1]) || 0;
+              }
+            }
+          }
 
-      // Forward-only steps; add a couple loops for smoother stop
-      let stepsRemaining = target - currentDigit;
-      if (stepsRemaining < 0) stepsRemaining += 10;
-      const extraLoops = 2; // full loops before landing
-      stepsRemaining += extraLoops * 10;
+          // If we still don't have a valid offset, check if we have an inline style
+          if (offsetY === 0 && node.style.transform) {
+            const match = node.style.transform.match(/translateY\(([^)]+)\)/);
+            if (match) {
+              offsetY = parseFloat(match[1]) || 0;
+            }
+          }
 
-      const totalSteps = stepsRemaining;
-      let stepDelay = 60; // start speed
-      let slowStep = 8;
-      const maxDelay = 320;
+          // Now remove animation and freeze position (AFTER reading)
+          node.classList.remove("reel-spin");
+          node.style.animation = "none";
+          node.style.transition = "none";
 
-      const tick = () => {
-        if (stepsRemaining <= 0) {
-          const targetIndex = workingIndex;
-          const displayIndex =
-            ((targetIndex % DIGITS.length) + DIGITS.length) % DIGITS.length;
-          node.style.transition = "transform 380ms cubic-bezier(0.22,1,0.36,1)";
-          node.style.transform = `translateY(${-displayIndex * ITEM_HEIGHT}px)`;
-          return;
-        }
+          // If offsetY is still 0, we're likely at the start or there's an issue
+          // In this case, estimate a position based on animation progress
+          // But first, let's ensure we preserve any existing transform
+          if (offsetY === 0) {
+            // Check if the strip has moved visually by comparing with initial position
+            // For now, use a safe default that won't cause a visible jump
+            // We'll start from somewhere in the middle of the strip
+            const safeStart = Math.floor(DIGITS.length / 3) * ITEM_HEIGHT;
+            offsetY = -safeStart;
+          }
 
-        workingIndex += 1;
-        stepsRemaining -= 1;
+          // Apply the frozen position
+          node.style.transform = `translateY(${offsetY}px)`;
 
-        const displayIndex =
-          ((workingIndex % DIGITS.length) + DIGITS.length) % DIGITS.length;
-        const offset = -displayIndex * ITEM_HEIGHT;
+          // Calculate current working index (not normalized to strip length)
+          let workingIndex = Math.round(-offsetY / ITEM_HEIGHT);
+          // Normalize to positive range
+          while (workingIndex < 0) {
+            workingIndex += DIGITS.length;
+          }
+          workingIndex = workingIndex % DIGITS.length;
 
-        node.style.transition = `transform ${stepDelay}ms linear`;
-        node.style.transform = `translateY(${offset}px)`;
+          const currentDigit = ((workingIndex % 10) + 10) % 10;
+          const target = targetDigit % 10;
 
-        stepDelay = Math.min(stepDelay + slowStep, maxDelay);
-        if (stepDelay > 140) slowStep = 14;
-        if (stepDelay > 240) slowStep = 20;
+          // Forward-only steps; add a couple loops for smoother stop
+          let stepsRemaining = target - currentDigit;
+          if (stepsRemaining < 0) stepsRemaining += 10;
+          const extraLoops = 2; // full loops before landing
+          stepsRemaining += extraLoops * 10;
 
-        tickTimerRef.current = setTimeout(tick, stepDelay);
-      };
+          let stepDelay = 60; // start speed
+          let slowStep = 8;
+          const maxDelay = 320;
 
-      tickTimerRef.current = setTimeout(tick, delay);
+          const tick = () => {
+            if (stepsRemaining <= 0) {
+              const targetIndex = workingIndex;
+              const displayIndex =
+                ((targetIndex % DIGITS.length) + DIGITS.length) % DIGITS.length;
+              node.style.transition =
+                "transform 380ms cubic-bezier(0.22,1,0.36,1)";
+              node.style.transform = `translateY(${
+                -displayIndex * ITEM_HEIGHT
+              }px)`;
+              return;
+            }
+
+            workingIndex += 1;
+            stepsRemaining -= 1;
+
+            const displayIndex =
+              ((workingIndex % DIGITS.length) + DIGITS.length) % DIGITS.length;
+            const offset = -displayIndex * ITEM_HEIGHT;
+
+            node.style.transition = `transform ${stepDelay}ms linear`;
+            node.style.transform = `translateY(${offset}px)`;
+
+            stepDelay = Math.min(stepDelay + slowStep, maxDelay);
+            if (stepDelay > 140) slowStep = 14;
+            if (stepDelay > 240) slowStep = 20;
+
+            tickTimerRef.current = setTimeout(tick, stepDelay);
+          };
+
+          tickTimerRef.current = setTimeout(tick, delay);
+        });
+      });
     };
 
     if (spinning) {
       startSpin();
     } else {
+      wasSpinningRef.current = false;
       stopSpin();
     }
 

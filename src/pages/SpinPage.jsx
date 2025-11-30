@@ -67,57 +67,6 @@ export default function SpinPage() {
             }
           }}
         />
-        <div className="mx-auto max-w-xl space-y-2 rounded-xl bg-white/10 p-3 text-sm text-white">
-          <div className="font-semibold">Test single reel</div>
-          <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
-            <label className="flex items-center gap-2">
-              Reel (0-2):
-              <input
-                type="number"
-                min="0"
-                max="2"
-                value={testReelIdx}
-                onChange={(e) =>
-                  setTestReelIdx(
-                    Math.min(2, Math.max(0, Number(e.target.value) || 0))
-                  )
-                }
-                className="w-16 rounded bg-white/20 px-2 py-1 text-white"
-              />
-            </label>
-            <label className="flex items-center gap-2">
-              Digit (0-9):
-              <input
-                type="number"
-                min="0"
-                max="9"
-                value={testDigit}
-                onChange={(e) => {
-                  const v = Number(e.target.value);
-                  if (Number.isNaN(v)) return;
-                  setTestDigit(String(Math.min(9, Math.max(0, v))));
-                }}
-                className="w-16 rounded bg-white/20 px-2 py-1 text-white"
-              />
-            </label>
-            <button
-              type="button"
-              onClick={() => {
-                const digits = ["0", "0", "0"];
-                digits[testReelIdx] = testDigit;
-                setFrozenNumber(digits.join(""));
-                setPendingNavigation(false);
-              }}
-              className="rounded bg-amber-300 px-3 py-1 font-semibold text-amber-900 shadow"
-            >
-              Test Reel
-            </button>
-          </div>
-          <p className="text-xs text-white/70">
-            Sets a temporary winning number with just the selected reel digit.
-            Other reels land on 0.
-          </p>
-        </div>
         <div className="mx-auto flex max-w-lg flex-col gap-3 sm:flex-row sm:items-center sm:justify-center">
           <ActionButton
             label="BẮT ĐẦU"
