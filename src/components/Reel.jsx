@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 
-let ITEM_HEIGHT = 270;
 const REPEAT = 20; // build a longer strip for smooth looping
 const DIGITS = Array.from({ length: REPEAT * 10 }, (_, i) => i % 10);
 
@@ -9,42 +8,28 @@ export default function Reel({ targetDigit = 0, spinning, delay = 0 }) {
   const tickTimerRef = useRef(null);
   const wasSpinningRef = useRef(false);
   const isInitializedRef = useRef(false);
+  const [itemHeight, setItemHeight] = useState(270);
+  const cachedHeightRef = useRef(null); // Cache để tránh đọc DOM liên tục (để tránh layout thrashing)
 
-  function useScreenSize() {
-    const [isLG, setIsLG] = useState(false);
-    const [isXL, setIsXL] = useState(false);
-  
-    useEffect(() => {
-      const lgQuery = window.matchMedia("(min-width: 1024px)");
-      const xlQuery = window.matchMedia("(min-width: 1280px)");
-  
-      const update = () => {
-        setIsLG(lgQuery.matches);
-        setIsXL(xlQuery.matches);
-      };
-  
-      update(); // initial
-      lgQuery.addEventListener("change", update);
-      xlQuery.addEventListener("change", update);
-  
-      return () => {
-        lgQuery.removeEventListener("change", update);
-        xlQuery.removeEventListener("change", update);
-      };
-    }, []);
-  
-    return { isLG, isXL };
-  }
+  // Đọc kích thước động từ DOM thay vì hardcode (với caching)
+  const getItemHeight = (useCache = true) => {
+    // Dùng cache nếu có và được phép
+    if (useCache && cachedHeightRef.current) {
+      return cachedHeightRef.current;
+    }
 
-  const { isLG, isXL } = useScreenSize();
+    if (!stripRef.current) return itemHeight || 270; // fallback
+    const firstItem = stripRef.current.querySelector('.reel-item');
+    if (!firstItem) return itemHeight || 270;
 
-  console.log(isXL)
+    // Đọc offsetHeight thay vì getBoundingClientRect để tránh subpixel issues
+    const height = firstItem.offsetHeight;
 
-  if (isLG) {
-    ITEM_HEIGHT = 270
-  } else {
-    ITEM_HEIGHT = 400
-  }
+    // Cache lại
+    cachedHeightRef.current = height;
+
+    return height;
+  };
 
   useEffect(() => {
     const node = stripRef.current;
@@ -61,9 +46,12 @@ export default function Reel({ targetDigit = 0, spinning, delay = 0 }) {
       clearTick();
       // Only reset transform if we're not already spinning (avoid resetting mid-spin)
       if (!wasSpinningRef.current) {
+        // Force reflow để đảm bảo browser nhận diện được thay đổi
         node.style.transition = "none";
         node.style.animation = "";
         node.style.transform = "translateY(0px)";
+        // Trigger reflow
+        void node.offsetHeight;
       }
       node.classList.add("reel-spin");
       wasSpinningRef.current = true;
@@ -78,8 +66,11 @@ export default function Reel({ targetDigit = 0, spinning, delay = 0 }) {
 
       clearTick();
 
-      // Đọc vị trí trong requestAnimationFrame để đảm bảo đọc được khi animation đang chạy :::: đọc được chỗ này
+      // Đọc vị trí trong requestAnimationFrame để đảm bảo đọc được khi animation đang chạy
       requestAnimationFrame(() => {
+        // ĐỌC kích thước NGAY TẠI ĐÂY từ DOM thực tế (dùng cache)
+        const ITEM_HEIGHT = getItemHeight(true);
+
         // Đọc vị trí hiện tại CHÍNH XÁC trong frame này (animation vẫn đang chạy)
         const cs = getComputedStyle(node);
         let currentOffset = 0;
@@ -95,10 +86,6 @@ export default function Reel({ targetDigit = 0, spinning, delay = 0 }) {
             }
           }
         }
-
-        // Fix chỗ này nè :::: KHÔNG dừng animation ngay, kệ moẹ nó chạy típ
-        // Để animation tiếp tục chạy cho đến khi tick bắt đầu
-        // chỗ này gây giật lắm
 
         // Calculate vị trí làm việc từ offset hiện tại
         let finalOffset = currentOffset;
@@ -125,13 +112,19 @@ export default function Reel({ targetDigit = 0, spinning, delay = 0 }) {
         const extraLoops = 2; // full loops before landing
         stepsRemaining += extraLoops * 10;
 
-        let stepDelay = 60; // start speed
-        let slowStep = 8;
-        const maxDelay = 320;
+        // Làm chậm tick để giảm tải cho browser
+        let stepDelay = 80; // tăng từ 60 → 80ms
+        let slowStep = 10; // tăng từ 8 → 10
+        const maxDelay = 400; // tăng từ 320 → 400ms
 
         // Hàm tick để quay về target
         const tick = () => {
+          // ĐỌC lại kích thước mỗi tick (sử dụng cache để tránh layout thrashing)
+          const CURRENT_ITEM_HEIGHT = getItemHeight(true);
+
           // DỪNG animation chỉ khi tick BẮT ĐẦU (không phải ngay khi stopSpin được gọi)
+          // Để animation tiếp tục chạy cho đến khi tick bắt đầu
+          // chỗ này gây giật lắm
           if (node.classList.contains('reel-spin')) {
             node.classList.remove("reel-spin");
             node.style.animation = "none";
@@ -142,9 +135,9 @@ export default function Reel({ targetDigit = 0, spinning, delay = 0 }) {
               try {
                 const matrix = new DOMMatrixReadOnly(cs.transform);
                 const newOffset = matrix.m42;
-                if (newOffset !== 0 && newOffset < -ITEM_HEIGHT) {
+                if (newOffset !== 0 && newOffset < -CURRENT_ITEM_HEIGHT) {
                   finalOffset = newOffset;
-                  workingIndex = Math.round(-finalOffset / ITEM_HEIGHT);
+                  workingIndex = Math.round(-finalOffset / CURRENT_ITEM_HEIGHT);
                   while (workingIndex < 0) {
                     workingIndex += DIGITS.length;
                   }
@@ -177,7 +170,7 @@ export default function Reel({ targetDigit = 0, spinning, delay = 0 }) {
             node.style.transition =
               "transform 380ms cubic-bezier(0.22,1,0.36,1)";
             node.style.transform = `translateY(${
-              -displayIndex * ITEM_HEIGHT
+              -displayIndex * CURRENT_ITEM_HEIGHT
             }px)`;
             wasSpinningRef.current = false;
             return;
@@ -188,14 +181,14 @@ export default function Reel({ targetDigit = 0, spinning, delay = 0 }) {
 
           const displayIndex =
             ((workingIndex % DIGITS.length) + DIGITS.length) % DIGITS.length;
-          const offset = -displayIndex * ITEM_HEIGHT;
+          const offset = -displayIndex * CURRENT_ITEM_HEIGHT;
 
           node.style.transition = `transform ${stepDelay}ms linear`;
           node.style.transform = `translateY(${offset}px)`;
 
           stepDelay = Math.min(stepDelay + slowStep, maxDelay);
-          if (stepDelay > 140) slowStep = 14;
-          if (stepDelay > 240) slowStep = 20;
+          if (stepDelay > 180) slowStep = 16;
+          if (stepDelay > 300) slowStep = 24;
 
           tickTimerRef.current = setTimeout(tick, stepDelay);
         };
@@ -219,12 +212,48 @@ export default function Reel({ targetDigit = 0, spinning, delay = 0 }) {
     return clearTick;
   }, [spinning, targetDigit, delay]);
 
+  // Cập nhật itemHeight khi component mount và khi resize
+  useEffect(() => {
+    const updateHeight = () => {
+      // Clear cache và force đọc lại
+      cachedHeightRef.current = null;
+      const height = getItemHeight(false);
+
+      // Chỉ update nếu thực sự thay đổi
+      if (height !== itemHeight) {
+        setItemHeight(height);
+        console.log('🎰 Item height updated:', height);
+      }
+    };
+
+    // Update ngay lập tức
+    updateHeight();
+
+    // Update lại sau một chút để đảm bảo CSS đã apply
+    const timeoutId = setTimeout(updateHeight, 100);
+
+    // Debounced resize handler để tránh spam
+    let resizeTimeout;
+    const handleResize = () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        updateHeight();
+      }, 150);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => {
+      clearTimeout(timeoutId);
+      clearTimeout(resizeTimeout);
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   return (
     <div
       className="reel-window border-[8px] border-[#86d3cc] h-[270px] xl:h-[400px] w-[200px] xl:w-[250px] relative overflow-hidden rounded-[18px] bg-gradient-to-b from-white to-slate-100 shadow-[inset_0_6px_12px_rgba(255,255,255,0.6),inset_0_-10px_16px_rgba(0,0,0,0.18)] "
       style={{
-        "--reel-item-height": `${ITEM_HEIGHT}px`,
+        "--reel-item-height": `${itemHeight}px`,
         "--reel-strip-length": DIGITS.length,
       }}
     >
@@ -232,7 +261,7 @@ export default function Reel({ targetDigit = 0, spinning, delay = 0 }) {
         {DIGITS.map((d, idx) => (
           <div
             key={`${d}-${idx}`}
-            className="reel-item h-[270px] xl:h-[400px] flex items-center justify-center text-[240px] font-black text-amber-500"
+            className="reel-item h-[270px] xl:h-[400px] flex items-center justify-center text-[153px] xl:text-[238px] font-black text-amber-500 leading-none"
           >
             {d}
           </div>
