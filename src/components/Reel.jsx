@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 
 const ITEM_HEIGHT = 80; // px per digit
-const REPEAT = 6; // build a longer strip for smooth looping
+const REPEAT = 20; // build a longer strip for smooth looping
 const DIGITS = Array.from({ length: REPEAT * 10 }, (_, i) => i % 10);
 
 export default function Reel({ targetDigit = 0, spinning, delay = 0 }) {

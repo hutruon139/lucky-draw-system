@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import SlotMachine from "../components/SlotMachine";
 import { formatTicket } from "../logic/spin";
 import { usePrizeFlow } from "../components/PrizeFlowManager";
+import backgroundImage from "../../assets/background.png";
 
 export default function SpinPage() {
   const navigate = useNavigate();
@@ -46,15 +47,16 @@ export default function SpinPage() {
   };
 
   return (
-    <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-gradient-to-b from-cyan-300 via-teal-500 to-teal-700 px-4 py-12">
-      <div className="absolute inset-0 opacity-60 [background:radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.25),transparent_40%),radial-gradient(circle_at_80%_30%,rgba(255,255,255,0.2),transparent_35%),radial-gradient(circle_at_50%_80%,rgba(255,255,255,0.15),transparent_40%)]" />
+    <div
+      className="relative flex min-h-screen items-center justify-center overflow-hidden bg-slate-900 px-4 py-12"
+      style={{
+        backgroundImage: `url(${backgroundImage})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
+      <div className="absolute inset-0 bg-gradient-to-b from-slate-900/50 via-slate-900/40 to-slate-900/60" />
       <div className="relative w-full max-w-4xl space-y-8 text-center text-white">
-        <h1 className="text-3xl font-extrabold tracking-wide drop-shadow-lg">
-          Vòng Quay May Mắn
-        </h1>
-        <p className="text-sm uppercase tracking-[0.4em] text-amber-200/90 drop-shadow">
-          {prizeLabel}
-        </p>
         <SlotMachine
           winningNumber={frozenNumber || undefined}
           isSpinning={isSpinning}

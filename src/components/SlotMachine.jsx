@@ -32,9 +32,8 @@ export default function SlotMachine({
   }, [isSpinning, digits.join("")]);
 
   return (
-    <div className="relative flex items-center justify-center rounded-[36px] bg-gradient-to-b from-slate-900/60 via-slate-800/80 to-slate-900/70 p-3 shadow-[0_18px_40px_rgba(0,0,0,0.45)]">
+    <div className="relative flex items-center justify-center">
       <div className="absolute inset-x-4 top-3 h-[6px] rounded-full bg-gradient-to-r from-white/30 via-white/70 to-white/30 blur-sm" />
-      <div className="absolute inset-x-6 bottom-3 h-[10px] rounded-full bg-black/30 blur-md" />
       <div
         className="
     relative
