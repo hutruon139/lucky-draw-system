@@ -69,23 +69,26 @@ export default function SpinPage() {
             }
           }}
         />
-        <div className="mx-auto flex max-w-lg flex-col gap-3 sm:flex-row sm:items-center sm:justify-center">
-          <ActionButton
-            label="BẮT ĐẦU"
-            onClick={handleStart}
-            disabled={isSpinning}
-            gradient="from-amber-200 via-amber-100 to-amber-200"
-            textClass="text-teal-800"
-          />
-        </div>
-        <div className="mx-auto flex max-w-lg flex-col gap-3 sm:flex-row sm:items-center sm:justify-center">
-          <ActionButton
-            label="DỪNG LẠI"
-            onClick={handleStop}
-            disabled={!isSpinning}
-            gradient="from-slate-200 via-slate-100 to-slate-200"
-            textClass="text-slate-800"
-          />
+      </div>
+        <div className="absolute space-y-8 bottom-20">
+          <div className="mx-auto flex max-w-lg flex-col gap-3 sm:flex-row sm:items-center sm:justify-center">
+            <ActionButton
+              label="BẮT ĐẦU"
+              onClick={handleStart}
+              disabled={isSpinning}
+              gradient="from-amber-200 via-amber-100 to-amber-200"
+              textClass="text-teal-800"
+            />
+          </div>
+          <div className="mx-auto flex max-w-lg flex-col gap-3 sm:flex-row sm:items-center sm:justify-center">
+            <ActionButton
+              label="DỪNG LẠI"
+              onClick={handleStop}
+              disabled={!isSpinning}
+              gradient="from-slate-200 via-slate-100 to-slate-200"
+              textClass="text-slate-800"
+            />
+          </div>
         </div>
         {!currentPrize && prizeQueue.length > 0 && (
           <div className="mx-auto flex max-w-lg flex-col gap-3 sm:flex-row sm:items-center sm:justify-center">
@@ -102,7 +105,6 @@ export default function SpinPage() {
             />
           </div>
         )}
-      </div>
     </div>
   );
 }

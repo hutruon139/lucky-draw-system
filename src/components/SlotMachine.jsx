@@ -38,10 +38,8 @@ export default function SlotMachine({
         className="
     relative
     flex flex-nowrap gap-3
-    rounded-[28px] border border-amber-100/50
-    bg-gradient-to-b from-amber-50/70 via-white/70 to-amber-50/70
+    rounded-[28px]
     px-6 py-6
-    shadow-[inset_0_2px_6px_rgba(255,255,255,0.6),inset_0_-8px_18px_rgba(0,0,0,0.25)]
   "
       >
         {digits.map((digit, idx) => (

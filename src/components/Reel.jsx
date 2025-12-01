@@ -1,6 +1,6 @@
-import React, { useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
-const ITEM_HEIGHT = 80; // px per digit
+let ITEM_HEIGHT = 270;
 const REPEAT = 20; // build a longer strip for smooth looping
 const DIGITS = Array.from({ length: REPEAT * 10 }, (_, i) => i % 10);
 
@@ -9,6 +9,42 @@ export default function Reel({ targetDigit = 0, spinning, delay = 0 }) {
   const tickTimerRef = useRef(null);
   const wasSpinningRef = useRef(false);
   const isInitializedRef = useRef(false);
+
+  function useScreenSize() {
+    const [isLG, setIsLG] = useState(false);
+    const [isXL, setIsXL] = useState(false);
+  
+    useEffect(() => {
+      const lgQuery = window.matchMedia("(min-width: 1024px)");
+      const xlQuery = window.matchMedia("(min-width: 1280px)");
+  
+      const update = () => {
+        setIsLG(lgQuery.matches);
+        setIsXL(xlQuery.matches);
+      };
+  
+      update(); // initial
+      lgQuery.addEventListener("change", update);
+      xlQuery.addEventListener("change", update);
+  
+      return () => {
+        lgQuery.removeEventListener("change", update);
+        xlQuery.removeEventListener("change", update);
+      };
+    }, []);
+  
+    return { isLG, isXL };
+  }
+
+  const { isLG, isXL } = useScreenSize();
+
+  console.log(isXL)
+
+  if (isLG) {
+    ITEM_HEIGHT = 270
+  } else {
+    ITEM_HEIGHT = 400
+  }
 
   useEffect(() => {
     const node = stripRef.current;
@@ -183,22 +219,20 @@ export default function Reel({ targetDigit = 0, spinning, delay = 0 }) {
     return clearTick;
   }, [spinning, targetDigit, delay]);
 
+
   return (
     <div
-      className="reel-window relative overflow-hidden rounded-[18px] bg-gradient-to-b from-white to-slate-100 shadow-[inset_0_6px_12px_rgba(255,255,255,0.6),inset_0_-10px_16px_rgba(0,0,0,0.18)]"
+      className="reel-window border-[8px] border-[#86d3cc] h-[270px] xl:h-[400px] w-[200px] xl:w-[250px] relative overflow-hidden rounded-[18px] bg-gradient-to-b from-white to-slate-100 shadow-[inset_0_6px_12px_rgba(255,255,255,0.6),inset_0_-10px_16px_rgba(0,0,0,0.18)] "
       style={{
-        height: ITEM_HEIGHT,
-        width: 96,
         "--reel-item-height": `${ITEM_HEIGHT}px`,
         "--reel-strip-length": DIGITS.length,
       }}
     >
-      <div ref={stripRef} className="reel-strip">
+      <div ref={stripRef} className="reel-strip font-[ReelDisplayA]">
         {DIGITS.map((d, idx) => (
           <div
             key={`${d}-${idx}`}
-            className="reel-item flex items-center justify-center text-5xl font-black text-amber-500"
-            style={{ height: ITEM_HEIGHT }}
+            className="reel-item h-[270px] xl:h-[400px] flex items-center justify-center text-[240px] font-black text-amber-500"
           >
             {d}
           </div>
