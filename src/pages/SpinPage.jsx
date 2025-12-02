@@ -7,6 +7,7 @@ import backgroundImage from "../../assets/background.png";
 
 export default function SpinPage() {
   const navigate = useNavigate();
+  const flowKey = import.meta.env.VITE_FLOW_MODE || "secondThird";
   const {
     startSpin,
     stopSpin,
@@ -15,7 +16,7 @@ export default function SpinPage() {
     prizeQueue,
     currentPrizeIndex,
     resetDraws,
-  } = usePrizeFlow();
+  } = usePrizeFlow(flowKey);
   const [pendingNavigation, setPendingNavigation] = useState(false);
   const [targetNumber, setTargetNumber] = useState(null);
   const [frozenNumber, setFrozenNumber] = useState(null);
