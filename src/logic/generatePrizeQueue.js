@@ -19,22 +19,12 @@ export function generatePrizeQueues() {
 
   const firstPrizeWinner = shuffledRigged[0];
   const specialPrizeWinners = shuffledRigged.slice(1, 1 + PRIZE_COUNTS.special);
-  const secondPrizeWinners = shuffledNormal.slice(0, PRIZE_COUNTS.second);
-  const thirdPrizeWinners = shuffledNormal.slice(
-    PRIZE_COUNTS.second,
-    PRIZE_COUNTS.second + PRIZE_COUNTS.third
-  );
-
-  const secondThirdQueue = [
-    ...thirdPrizeWinners.map((participant) => ({
-      prizeType: "third",
-      participant,
-    })),
-    ...secondPrizeWinners.map((participant) => ({
-      prizeType: "second",
-      participant,
-    })),
-  ];
+  // For the third/second flow we now just consume everyone in the normal pool
+  // until we run out (no fixed prize counts).
+  const secondThirdQueue = shuffledNormal.map((participant) => ({
+    prizeType: "draw",
+    participant,
+  }));
 
   const specialFirstQueue = [
     ...specialPrizeWinners.map((participant) => ({
