@@ -172,6 +172,8 @@ export function usePrizeFlow(flowKey = "secondThird") {
     currentParticipant: null,
     isSpinning: false,
   };
+  const remaining =
+    (flow.prizeQueue?.length || 0) - (flow.currentPrizeIndex || 0);
   const currentPrize =
     flow.prizeQueue && flow.prizeQueue[flow.currentPrizeIndex];
   const lastPrize =
@@ -186,6 +188,7 @@ export function usePrizeFlow(flowKey = "secondThird") {
     isSpinning: flow.isSpinning,
     currentPrize: currentPrize || null,
     lastPrize,
+    remaining,
     startSpin: () => context.startSpin(flowKey),
     stopSpin: () => context.stopSpin(flowKey),
     nextDraw: () => context.nextDraw(flowKey),
