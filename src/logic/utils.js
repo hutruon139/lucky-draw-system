@@ -1,8 +1,10 @@
 import participantsData from "../data/participants.json";
 
 export const STORAGE_KEYS = {
-  prizeQueue: "lucky_draw_prize_queue",
-  prizeIndex: "lucky_draw_prize_index",
+  prizeQueueSecondThird: "lucky_draw_prize_queue_second_third",
+  prizeIndexSecondThird: "lucky_draw_prize_index_second_third",
+  prizeQueueSpecialFirst: "lucky_draw_prize_queue_special_first",
+  prizeIndexSpecialFirst: "lucky_draw_prize_index_special_first",
 };
 
 export function zeroPad(num, size = 3) {
@@ -24,10 +26,22 @@ export function loadParticipants() {
   return participantsData;
 }
 
-export function restoreStateFromLocalStorage() {
+export function restoreFlowFromLocalStorage(flowKey) {
+  const keyMap = {
+    secondThird: {
+      queue: STORAGE_KEYS.prizeQueueSecondThird,
+      index: STORAGE_KEYS.prizeIndexSecondThird,
+    },
+    specialFirst: {
+      queue: STORAGE_KEYS.prizeQueueSpecialFirst,
+      index: STORAGE_KEYS.prizeIndexSpecialFirst,
+    },
+  };
+  const keys = keyMap[flowKey];
+  if (!keys) return null;
   try {
-    const queueRaw = localStorage.getItem(STORAGE_KEYS.prizeQueue);
-    const indexRaw = localStorage.getItem(STORAGE_KEYS.prizeIndex);
+    const queueRaw = localStorage.getItem(keys.queue);
+    const indexRaw = localStorage.getItem(keys.index);
     if (!queueRaw) return null;
     const parsedQueue = JSON.parse(queueRaw);
     const parsedIndex = indexRaw ? parseInt(indexRaw, 10) : 0;
@@ -38,7 +52,19 @@ export function restoreStateFromLocalStorage() {
   }
 }
 
-export function persistQueue(prizeQueue, currentPrizeIndex = 0) {
-  localStorage.setItem(STORAGE_KEYS.prizeQueue, JSON.stringify(prizeQueue));
-  localStorage.setItem(STORAGE_KEYS.prizeIndex, `${currentPrizeIndex}`);
+export function persistFlowToLocalStorage(flowKey, prizeQueue, currentPrizeIndex = 0) {
+  const keyMap = {
+    secondThird: {
+      queue: STORAGE_KEYS.prizeQueueSecondThird,
+      index: STORAGE_KEYS.prizeIndexSecondThird,
+    },
+    specialFirst: {
+      queue: STORAGE_KEYS.prizeQueueSpecialFirst,
+      index: STORAGE_KEYS.prizeIndexSpecialFirst,
+    },
+  };
+  const keys = keyMap[flowKey];
+  if (!keys) return;
+  localStorage.setItem(keys.queue, JSON.stringify(prizeQueue));
+  localStorage.setItem(keys.index, `${currentPrizeIndex}`);
 }

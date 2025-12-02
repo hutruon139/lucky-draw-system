@@ -7,7 +7,7 @@ const PRIZE_COUNTS = {
   special: 6,
 };
 
-export function generatePrizeQueue() {
+export function generatePrizeQueues() {
   const participants = loadParticipants();
   const rigged = participants.filter((p) => p.isRigged);
   const normal = participants.filter(
@@ -25,9 +25,7 @@ export function generatePrizeQueue() {
     PRIZE_COUNTS.second + PRIZE_COUNTS.third
   );
 
-  // Order: third prizes first, then second, then special, then first.
-  // This matches flow where smaller prizes are drawn before headline prizes.
-  const prizeQueue = [
+  const secondThirdQueue = [
     ...thirdPrizeWinners.map((participant) => ({
       prizeType: "third",
       participant,
@@ -36,6 +34,9 @@ export function generatePrizeQueue() {
       prizeType: "second",
       participant,
     })),
+  ];
+
+  const specialFirstQueue = [
     ...specialPrizeWinners.map((participant) => ({
       prizeType: "special",
       participant,
@@ -43,6 +44,5 @@ export function generatePrizeQueue() {
     { prizeType: "first", participant: firstPrizeWinner },
   ];
 
-  persistQueue(prizeQueue, 0);
-  return prizeQueue;
+  return { secondThirdQueue, specialFirstQueue };
 }

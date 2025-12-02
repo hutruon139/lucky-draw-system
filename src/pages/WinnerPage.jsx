@@ -6,7 +6,8 @@ import backgroundImage from "../../assets/background.png";
 
 export default function WinnerPage() {
   const navigate = useNavigate();
-  const { lastPrize, currentParticipant, nextDraw } = usePrizeFlow();
+  const flowKey = import.meta.env.VITE_FLOW_MODE || "secondThird";
+  const { lastPrize, currentParticipant, nextDraw } = usePrizeFlow(flowKey);
 
   useEffect(() => {
     if (!lastPrize || !currentParticipant) {

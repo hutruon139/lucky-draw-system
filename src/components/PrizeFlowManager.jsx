@@ -6,74 +6,136 @@ import React, {
   useMemo,
   useState,
 } from "react";
-import { generatePrizeQueue } from "../logic/generatePrizeQueue";
-import {
-  persistQueue,
-  restoreStateFromLocalStorage,
-} from "../logic/utils";
+import { generatePrizeQueues } from "../logic/generatePrizeQueue";
+import { persistFlowToLocalStorage, restoreFlowFromLocalStorage } from "../logic/utils";
 
 const PrizeContext = createContext(null);
 
 export function PrizeFlowManager({ children }) {
-  const [prizeQueue, setPrizeQueue] = useState([]);
-  const [currentPrizeIndex, setCurrentPrizeIndex] = useState(0);
-  const [currentParticipant, setCurrentParticipant] = useState(null);
-  const [isSpinning, setIsSpinning] = useState(false);
+  const initialFlowState = {
+    prizeQueue: [],
+    currentPrizeIndex: 0,
+    currentParticipant: null,
+    isSpinning: false,
+  };
+
+  const [flows, setFlows] = useState({
+    secondThird: { ...initialFlowState },
+    specialFirst: { ...initialFlowState },
+  });
 
   useEffect(() => {
-    const restored = restoreStateFromLocalStorage();
-    if (restored?.prizeQueue?.length) {
-      setPrizeQueue(restored.prizeQueue);
-      setCurrentPrizeIndex(restored.currentPrizeIndex || 0);
-    } else {
-      const queue = generatePrizeQueue();
-      setPrizeQueue(queue);
-      setCurrentPrizeIndex(0);
+    const restoredA = restoreFlowFromLocalStorage("secondThird");
+    const restoredB = restoreFlowFromLocalStorage("specialFirst");
+
+    if (restoredA?.prizeQueue?.length && restoredB?.prizeQueue?.length) {
+      setFlows({
+        secondThird: {
+          prizeQueue: restoredA.prizeQueue,
+          currentPrizeIndex: restoredA.currentPrizeIndex || 0,
+          currentParticipant: null,
+          isSpinning: false,
+        },
+        specialFirst: {
+          prizeQueue: restoredB.prizeQueue,
+          currentPrizeIndex: restoredB.currentPrizeIndex || 0,
+          currentParticipant: null,
+          isSpinning: false,
+        },
+      });
+      return;
     }
+
+    const { secondThirdQueue, specialFirstQueue } = generatePrizeQueues();
+    setFlows({
+      secondThird: {
+        prizeQueue: secondThirdQueue,
+        currentPrizeIndex: 0,
+        currentParticipant: null,
+        isSpinning: false,
+      },
+      specialFirst: {
+        prizeQueue: specialFirstQueue,
+        currentPrizeIndex: 0,
+        currentParticipant: null,
+        isSpinning: false,
+      },
+    });
   }, []);
 
   useEffect(() => {
-    if (prizeQueue.length) {
-      persistQueue(prizeQueue, currentPrizeIndex);
-    }
-  }, [prizeQueue, currentPrizeIndex]);
+    persistFlowToLocalStorage(
+      "secondThird",
+      flows.secondThird.prizeQueue,
+      flows.secondThird.currentPrizeIndex
+    );
+    persistFlowToLocalStorage(
+      "specialFirst",
+      flows.specialFirst.prizeQueue,
+      flows.specialFirst.currentPrizeIndex
+    );
+  }, [flows]);
 
-  const currentPrize = useMemo(
-    () => prizeQueue[currentPrizeIndex] || null,
-    [prizeQueue, currentPrizeIndex]
-  );
-  const lastPrize = useMemo(
-    () => (currentPrizeIndex > 0 ? prizeQueue[currentPrizeIndex - 1] : null),
-    [prizeQueue, currentPrizeIndex]
-  );
-
-  const startSpin = () => {
-    setIsSpinning(true);
-    setCurrentParticipant(null);
+  const startSpin = (flowKey) => {
+    setFlows((prev) => ({
+      ...prev,
+      [flowKey]: {
+        ...prev[flowKey],
+        isSpinning: true,
+        currentParticipant: null,
+      },
+    }));
   };
 
-  const stopSpin = () => {
+  const stopSpin = (flowKey) => {
+    const flow = flows[flowKey];
+    const currentPrize = flow.prizeQueue[flow.currentPrizeIndex];
     if (!currentPrize) {
-      setIsSpinning(false);
+      setFlows((prev) => ({
+        ...prev,
+        [flowKey]: { ...prev[flowKey], isSpinning: false },
+      }));
       return null;
     }
-    setIsSpinning(false);
-    setCurrentParticipant(currentPrize.participant);
-    setCurrentPrizeIndex((prev) => prev + 1);
+    setFlows((prev) => ({
+      ...prev,
+      [flowKey]: {
+        ...prev[flowKey],
+        isSpinning: false,
+        currentParticipant: currentPrize.participant,
+        currentPrizeIndex: prev[flowKey].currentPrizeIndex + 1,
+      },
+    }));
     return currentPrize;
   };
 
-  const nextDraw = () => {
-    setCurrentParticipant(null);
-    setIsSpinning(false);
+  const nextDraw = (flowKey) => {
+    setFlows((prev) => ({
+      ...prev,
+      [flowKey]: {
+        ...prev[flowKey],
+        currentParticipant: null,
+        isSpinning: false,
+      },
+    }));
   };
 
   const resetDraws = useCallback(() => {
-    const queue = generatePrizeQueue();
-    setPrizeQueue(queue);
-    setCurrentPrizeIndex(0);
-    setCurrentParticipant(null);
-    setIsSpinning(false);
+    const { secondThirdQueue, specialFirstQueue } = generatePrizeQueues();
+    setFlows({
+      secondThird: {
+        prizeQueue: secondThirdQueue,
+        currentPrizeIndex: 0,
+        currentParticipant: null,
+        isSpinning: false,
+      },
+      specialFirst: {
+        prizeQueue: specialFirstQueue,
+        currentPrizeIndex: 0,
+        currentParticipant: null,
+        isSpinning: false,
+      },
+    });
   }, []);
 
   useEffect(() => {
@@ -88,12 +150,7 @@ export function PrizeFlowManager({ children }) {
   }, [resetDraws]);
 
   const value = {
-    prizeQueue,
-    currentPrizeIndex,
-    currentParticipant,
-    isSpinning,
-    currentPrize,
-    lastPrize,
+    flows,
     startSpin,
     stopSpin,
     nextDraw,
@@ -103,10 +160,34 @@ export function PrizeFlowManager({ children }) {
   return <PrizeContext.Provider value={value}>{children}</PrizeContext.Provider>;
 }
 
-export function usePrizeFlow() {
+export function usePrizeFlow(flowKey = "secondThird") {
   const context = useContext(PrizeContext);
   if (!context) {
     throw new Error("usePrizeFlow must be used within PrizeFlowManager");
   }
-  return context;
+  const flow = context.flows[flowKey] || {
+    prizeQueue: [],
+    currentPrizeIndex: 0,
+    currentParticipant: null,
+    isSpinning: false,
+  };
+  const currentPrize =
+    flow.prizeQueue && flow.prizeQueue[flow.currentPrizeIndex];
+  const lastPrize =
+    flow.currentPrizeIndex > 0
+      ? flow.prizeQueue[flow.currentPrizeIndex - 1]
+      : null;
+
+  return {
+    prizeQueue: flow.prizeQueue,
+    currentPrizeIndex: flow.currentPrizeIndex,
+    currentParticipant: flow.currentParticipant,
+    isSpinning: flow.isSpinning,
+    currentPrize: currentPrize || null,
+    lastPrize,
+    startSpin: () => context.startSpin(flowKey),
+    stopSpin: () => context.stopSpin(flowKey),
+    nextDraw: () => context.nextDraw(flowKey),
+    resetDraws: context.resetDraws,
+  };
 }
