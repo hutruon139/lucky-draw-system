@@ -109,7 +109,7 @@ export default function Reel({ targetDigit = 0, spinning, delay = 0 }) {
         // Forward-only steps; add a couple loops for smoother stop
         let stepsRemaining = target - currentDigit;
         if (stepsRemaining < 0) stepsRemaining += 10;
-        const extraLoops = 2; // full loops before landing
+        const extraLoops = 1; // full loops before landing
         stepsRemaining += extraLoops * 10;
 
         // Làm chậm tick để giảm tải cho browser

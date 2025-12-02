@@ -89,11 +89,10 @@ export default function SpinPage() {
               textClass="text-slate-800"
             />
           </div>
-        </div>
-        {!currentPrize && prizeQueue.length > 0 && (
+                  {!currentPrize && prizeQueue.length > 0 && (
           <div className="mx-auto flex max-w-lg flex-col gap-3 sm:flex-row sm:items-center sm:justify-center">
             <ActionButton
-              label="RESET (TEST)"
+              label="RESET"
               onClick={() => {
                 resetDraws();
                 setFrozenNumber(null);
@@ -105,6 +104,7 @@ export default function SpinPage() {
             />
           </div>
         )}
+        </div>
     </div>
   );
 }
