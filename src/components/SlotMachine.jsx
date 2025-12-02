@@ -33,12 +33,13 @@ export default function SlotMachine({
 
   return (
     <div className="relative flex items-center justify-center">
+
       <div
         className="
     relative
     flex flex-nowrap gap-3
     rounded-[28px]
-    px-6 py-6
+    px-6 pt-20
   "
       >
         {digits.map((digit, idx) => (

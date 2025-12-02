@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import SlotMachine from "../components/SlotMachine";
 import { formatTicket } from "../logic/spin";
 import { usePrizeFlow } from "../components/PrizeFlowManager";
-import backgroundImage from "../../assets/background.png";
+import backgroundImage from "../../assets/background.svg";
 
 export default function SpinPage() {
   const navigate = useNavigate();
@@ -61,6 +61,7 @@ export default function SpinPage() {
         backgroundPosition: "center",
       }}
     >
+      <div className="h-36" />
       <div className="relative w-full max-w-4xl space-y-8 text-center text-white">
         <SlotMachine
           winningNumber={frozenNumber || undefined}
@@ -70,18 +71,19 @@ export default function SpinPage() {
               setTimeout(() => {
                 navigate("/winner");
                 setPendingNavigation(false);
-              }, 7000); // pause for 10s after landing
+              }, 7000);
             }
           }}
         />
-      </div>
-        <div className="absolute space-y-2 bottom-20">
+
+        {/* ✅ buttons now directly under SlotMachine */}
+        <div className="space-y-2 mt-0">
           <div className="mx-auto flex max-w-lg flex-col gap-3 sm:flex-row sm:items-center sm:justify-center">
             <ActionButton
               label="BẮT ĐẦU"
               onClick={handleStart}
               disabled={isSpinning}
-              gradient="bg-[linear-gradient(90deg,#c69c6b,#f0d4a1,#c69c6b)] "
+              gradient="bg-[linear-gradient(90deg,#c69c6b,#f0d4a1,#c69c6b)]"
               textClass="text-teal-800"
             />
           </div>
@@ -95,6 +97,7 @@ export default function SpinPage() {
             />
           </div>
         </div>
+      </div>
     </div>
   );
 }
@@ -102,14 +105,14 @@ export default function SpinPage() {
 function ActionButton({ label, onClick, disabled, gradient, textClass }) {
   return (
     <button
-  type="button"
-  onClick={onClick}
-  disabled={disabled}
-  className={`
+      type="button"
+      onClick={onClick}
+      disabled={disabled}
+      className={`
     w-full sm:w-auto
     rounded-full
     px-10 py-3
-    text-xl font-semibold uppercase tracking-wide
+    text-3xl font-semibold uppercase tracking-wide
 
     ${gradient}      /* keep your dynamic gradient */
     text-[#134A46]                    /* dark teal text */
@@ -126,9 +129,8 @@ function ActionButton({ label, onClick, disabled, gradient, textClass }) {
     active:scale-[0.98]
     disabled:cursor-not-allowed disabled:opacity-60
   `}
->
-  <span className={`${textClass} drop-shadow`}>{label}</span>
-</button>
-
+    >
+      <span className={`${textClass} drop-shadow`}>{label}</span>
+    </button>
   );
 }

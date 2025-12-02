@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import WinnerScreen from "../components/WinnerScreen";
 import { usePrizeFlow } from "../components/PrizeFlowManager";
-import backgroundImage from "../../assets/background.png";
+import backgroundImage from "../../assets/background.svg";
 
 export default function WinnerPage() {
   const navigate = useNavigate();
