@@ -1,4 +1,4 @@
-import { loadParticipants, persistQueue, shuffle } from "./utils";
+import { loadParticipants, shuffle } from "./utils";
 
 const PRIZE_COUNTS = {
   first: 1,

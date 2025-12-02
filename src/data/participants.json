@@ -150,29 +150,29 @@
     "number": "022",
     "company": "Nhà phân phối Kim Vũ Bích",
     "name": "Trần Ngự Vũ",
-    "isRigged": false,
-    "isEligible": false
+    "isRigged": true,
+    "isEligible": true
   },
   {
     "number": "023",
     "company": "Nhà phân phối Phú Bình Gia Lai",
     "name": "Phan Thị Anh Đào",
-    "isRigged": false,
-    "isEligible": false
+    "isRigged": true,
+    "isEligible": true
   },
   {
     "number": "024",
     "company": "Nhà phân phối Nam Du Gia Lai",
     "name": "Phạm Hồng Hậu",
-    "isRigged": false,
-    "isEligible": false
+    "isRigged": true,
+    "isEligible": true
   },
   {
     "number": "025",
     "company": "Nhà phân phối Vật tư Đà Nẵng",
     "name": "Lưu Hữu Hải",
-    "isRigged": false,
-    "isEligible": false
+    "isRigged": true,
+    "isEligible": true
   },
   {
     "number": "026",
@@ -227,36 +227,36 @@
     "number": "033",
     "company": "Nhà phân phối Minh Dũng",
     "name": "Dương Văn Hùng",
-    "isRigged": false,
-    "isEligible": false
+    "isRigged": true,
+    "isEligible": true
   },
   {
     "number": "034",
     "company": "Nhà phân phối Minh Khoa",
     "name": "Trần Thị Lệ Thủy",
-    "isRigged": false,
-    "isEligible": false
+    "isRigged": true,
+    "isEligible": true
   },
   {
     "number": "035",
     "company": "Nhà phân phối Tuấn Vũ",
     "name": "Đàm Thị Hải",
-    "isRigged": false,
-    "isEligible": false
+    "isRigged": true,
+    "isEligible": true
   },
   {
     "number": "036",
     "company": "Nhà phân phối Kim Ngoan",
     "name": "Trần Thành Trung",
-    "isRigged": false,
-    "isEligible": false
+    "isRigged": true,
+    "isEligible": true
   },
   {
     "number": "037",
     "company": "Nhà phân phối Ngọc Vy",
     "name": "Nguyễn Hoài Nam",
-    "isRigged": false,
-    "isEligible": false
+    "isRigged": true,
+    "isEligible": true
   },
   {
     "number": "038",
@@ -318,22 +318,22 @@
     "number": "046",
     "company": "Nhà phân phối Hưng Thạnh",
     "name": "Liêu Bích Thủy",
-    "isRigged": false,
-    "isEligible": false
+    "isRigged": true,
+    "isEligible": true
   },
   {
     "number": "047",
     "company": "Nhà phân phối Kim Hoàng",
     "name": "Huỳnh Thị Kim Hoàng",
-    "isRigged": false,
-    "isEligible": false
+    "isRigged": true,
+    "isEligible": true
   },
   {
     "number": "048",
     "company": "Nhà phân phối Út Nữ",
     "name": "Nguyễn Thị Thu Hương",
-    "isRigged": false,
-    "isEligible": false
+    "isRigged": true,
+    "isEligible": true
   },
   {
     "number": "049",
@@ -353,8 +353,8 @@
     "number": "051",
     "company": "Nhà phân phối Trần Thị Ngoan",
     "name": "Lê Trần Dũng",
-    "isRigged": false,
-    "isEligible": false
+    "isRigged": true,
+    "isEligible": true
   },
   {
     "number": "052",

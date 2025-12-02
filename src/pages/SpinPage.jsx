@@ -54,14 +54,13 @@ export default function SpinPage() {
 
   return (
     <div
-      className="relative flex min-h-screen items-center justify-center overflow-hidden bg-slate-900 px-4 py-12"
+      className="relative flex min-h-screen items-center justify-center overflow-hidden px-4 py-12"
       style={{
         backgroundImage: `url(${backgroundImage})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
     >
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-900/50 via-slate-900/40 to-slate-900/60" />
       <div className="relative w-full max-w-4xl space-y-8 text-center text-white">
         <SlotMachine
           winningNumber={frozenNumber || undefined}
@@ -71,18 +70,18 @@ export default function SpinPage() {
               setTimeout(() => {
                 navigate("/winner");
                 setPendingNavigation(false);
-              }, 5000); // pause for 10s after landing
+              }, 7000); // pause for 10s after landing
             }
           }}
         />
       </div>
-        <div className="absolute space-y-8 bottom-20">
+        <div className="absolute space-y-2 bottom-20">
           <div className="mx-auto flex max-w-lg flex-col gap-3 sm:flex-row sm:items-center sm:justify-center">
             <ActionButton
               label="BẮT ĐẦU"
               onClick={handleStart}
               disabled={isSpinning}
-              gradient="from-amber-200 via-amber-100 to-amber-200"
+              gradient="bg-[linear-gradient(90deg,#c69c6b,#f0d4a1,#c69c6b)] "
               textClass="text-teal-800"
             />
           </div>
@@ -91,25 +90,10 @@ export default function SpinPage() {
               label="DỪNG LẠI"
               onClick={handleStop}
               disabled={!isSpinning}
-              gradient="from-slate-200 via-slate-100 to-slate-200"
+              gradient="bg-gradient-to-r from-slate-200 via-slate-100 to-slate-200"
               textClass="text-slate-800"
             />
           </div>
-                  {!currentPrize && prizeQueue.length > 0 && (
-          <div className="mx-auto flex max-w-lg flex-col gap-3 sm:flex-row sm:items-center sm:justify-center">
-            <ActionButton
-              label="RESET"
-              onClick={() => {
-                resetDraws();
-                setFrozenNumber(null);
-                setPendingNavigation(false);
-              }}
-              disabled={isSpinning}
-              gradient="from-rose-200 via-rose-100 to-rose-200"
-              textClass="text-rose-900"
-            />
-          </div>
-        )}
         </div>
     </div>
   );
@@ -118,12 +102,33 @@ export default function SpinPage() {
 function ActionButton({ label, onClick, disabled, gradient, textClass }) {
   return (
     <button
-      type="button"
-      onClick={onClick}
-      disabled={disabled}
-      className={`w-full rounded-full bg-gradient-to-r ${gradient} px-6 py-3 text-lg font-semibold uppercase tracking-wide shadow-lg shadow-teal-900/30 transition hover:scale-[1.01] disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto`}
-    >
-      <span className={`${textClass} drop-shadow`}>{label}</span>
-    </button>
+  type="button"
+  onClick={onClick}
+  disabled={disabled}
+  className={`
+    w-full sm:w-auto
+    rounded-full
+    px-10 py-3
+    text-xl font-semibold uppercase tracking-wide
+
+    ${gradient}      /* keep your dynamic gradient */
+    text-[#134A46]                    /* dark teal text */
+
+    border-8 border-[#299b93]         /* thick teal border like reference */
+
+    shadow-[0_0_20px_rgba(44,166,169,0.35),
+            inset_0_2px_6px_rgba(255,255,255,0.35),
+            inset_0_-4px_10px_rgba(0,0,0,0.35)]
+    drop-shadow-[0_4px_8px_rgba(0,0,0,0.8)]
+
+    transition-transform duration-150
+    hover:scale-[1.03]
+    active:scale-[0.98]
+    disabled:cursor-not-allowed disabled:opacity-60
+  `}
+>
+  <span className={`${textClass} drop-shadow`}>{label}</span>
+</button>
+
   );
 }
