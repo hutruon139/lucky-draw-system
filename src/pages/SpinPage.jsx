@@ -38,7 +38,7 @@ export default function SpinPage() {
     if (!currentPrize?.participant?.number) return;
     setPendingNavigation(false);
     setTargetNumber(formatTicket(currentPrize.participant.number)); // store 3-digit target padded
-    setFrozenNumber(null); // clear previous result
+    setFrozenNumber(null);
     startSpin();
   };
 
@@ -71,7 +71,7 @@ export default function SpinPage() {
               setTimeout(() => {
                 navigate("/winner");
                 setPendingNavigation(false);
-              }, 7000);
+              }, 4000);
             }
           }}
         />
