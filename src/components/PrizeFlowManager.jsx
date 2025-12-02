@@ -142,6 +142,7 @@ export function PrizeFlowManager({ children }) {
     const handler = (event) => {
       if (event.key?.toLowerCase() === "r") {
         event.preventDefault();
+        console.log("[RESET] Hotkey R pressed - resetting prize queues");
         resetDraws();
       }
     };
