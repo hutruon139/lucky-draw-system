@@ -144,6 +144,7 @@ export function PrizeFlowManager({ children }) {
         event.preventDefault();
         console.log("[RESET] Hotkey R pressed - resetting prize queues");
         resetDraws();
+        alert("All prize queues have been reset.");
       }
     };
     window.addEventListener("keydown", handler);
