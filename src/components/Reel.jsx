@@ -19,7 +19,7 @@ export default function Reel({ targetDigit = 0, spinning, delay = 0 }) {
     }
 
     if (!stripRef.current) return itemHeight || 270; // fallback
-    const firstItem = stripRef.current.querySelector('.reel-item');
+    const firstItem = stripRef.current.querySelector(".reel-item");
     if (!firstItem) return itemHeight || 270;
 
     // Đọc offsetHeight thay vì getBoundingClientRect để tránh subpixel issues
@@ -109,7 +109,7 @@ export default function Reel({ targetDigit = 0, spinning, delay = 0 }) {
         // Forward-only steps; add a couple loops for smoother stop
         let stepsRemaining = target - currentDigit;
         if (stepsRemaining < 0) stepsRemaining += 10;
-        const extraLoops = 1; // full loops before landing
+        const extraLoops = 2; // full loops before landing
         stepsRemaining += extraLoops * 10;
 
         // Làm chậm tick để giảm tải cho browser
@@ -125,7 +125,7 @@ export default function Reel({ targetDigit = 0, spinning, delay = 0 }) {
           // DỪNG animation chỉ khi tick BẮT ĐẦU (không phải ngay khi stopSpin được gọi)
           // Để animation tiếp tục chạy cho đến khi tick bắt đầu
           // chỗ này gây giật lắm
-          if (node.classList.contains('reel-spin')) {
+          if (node.classList.contains("reel-spin")) {
             node.classList.remove("reel-spin");
             node.style.animation = "none";
             node.style.transition = "none";
@@ -222,7 +222,7 @@ export default function Reel({ targetDigit = 0, spinning, delay = 0 }) {
       // Chỉ update nếu thực sự thay đổi
       if (height !== itemHeight) {
         setItemHeight(height);
-        console.log('🎰 Item height updated:', height);
+        console.log("🎰 Item height updated:", height);
       }
     };
 
@@ -241,17 +241,17 @@ export default function Reel({ targetDigit = 0, spinning, delay = 0 }) {
       }, 150);
     };
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
     return () => {
       clearTimeout(timeoutId);
       clearTimeout(resizeTimeout);
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
   return (
     <div
-      className="reel-window border-[8px] border-[#86d3cc] h-[270px] xl:h-[400px] w-[200px] xl:w-[250px] relative overflow-hidden rounded-[18px] bg-gradient-to-b from-white to-slate-100 shadow-[inset_0_6px_12px_rgba(255,255,255,0.6),inset_0_-10px_16px_rgba(0,0,0,0.18)] "
+      className="reel-window border-[8px] border-[#86d3cc] h-[290px] xl:h-[400px] w-[200px] xl:w-[250px] relative overflow-hidden rounded-[18px] bg-gradient-to-b from-white to-slate-100 shadow-[inset_0_6px_12px_rgba(255,255,255,0.6),inset_0_-10px_16px_rgba(0,0,0,0.18)] "
       style={{
         "--reel-item-height": `${itemHeight}px`,
         "--reel-strip-length": DIGITS.length,
@@ -261,7 +261,14 @@ export default function Reel({ targetDigit = 0, spinning, delay = 0 }) {
         {DIGITS.map((d, idx) => (
           <div
             key={`${d}-${idx}`}
-            className="reel-item h-[270px] xl:h-[400px] flex items-center justify-center text-[153px] xl:text-[238px] font-black text-amber-500 leading-none"
+            className="
+  reel-item h-[270px] xl:h-[400px]
+  flex items-center justify-center
+  text-[153px] xl:text-[280px] font-black leading-none
+  text-transparent bg-clip-text
+  bg-[linear-gradient(to_bottom,#f0d4a1,#c69c6b)]
+  drop-shadow-[0_4px_8px_rgba(0,0,0,0.8)]
+"
           >
             {d}
           </div>

@@ -33,7 +33,6 @@ export default function SlotMachine({
 
   return (
     <div className="relative flex items-center justify-center">
-      <div className="absolute inset-x-4 top-3 h-[6px] rounded-full from-white/30 via-white/70 to-white/30 blur-sm" />
       <div
         className="
     relative
