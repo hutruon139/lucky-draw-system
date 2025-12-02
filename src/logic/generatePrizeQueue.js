@@ -17,8 +17,10 @@ export function generatePrizeQueues() {
   const shuffledRigged = shuffle(rigged);
   const shuffledNormal = shuffle(normal);
 
+  // For the special/first flow, use the entire rigged pool:
+  // index 0 -> first prize, the rest -> special
   const firstPrizeWinner = shuffledRigged[0];
-  const specialPrizeWinners = shuffledRigged.slice(1, 1 + PRIZE_COUNTS.special);
+  const specialPrizeWinners = shuffledRigged.slice(1);
   // For the third/second flow we now just consume everyone in the normal pool
   // until we run out (no fixed prize counts).
   const secondThirdQueue = shuffledNormal.map((participant) => ({
@@ -27,11 +29,11 @@ export function generatePrizeQueues() {
   }));
 
   const specialFirstQueue = [
+    { prizeType: "first", participant: firstPrizeWinner },
     ...specialPrizeWinners.map((participant) => ({
       prizeType: "special",
       participant,
     })),
-    { prizeType: "first", participant: firstPrizeWinner },
   ];
 
   return { secondThirdQueue, specialFirstQueue };

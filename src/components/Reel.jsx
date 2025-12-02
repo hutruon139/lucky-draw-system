@@ -106,16 +106,16 @@ export default function Reel({ targetDigit = 0, spinning, delay = 0 }) {
         const currentDigit = DIGITS[workingIndex];
         const target = targetDigit % 10;
 
-        // Forward-only steps; add a couple loops for smoother stop
+        // Forward-only steps; add loops for smoother stop
         let stepsRemaining = target - currentDigit;
         if (stepsRemaining < 0) stepsRemaining += 10;
-        const extraLoops = 2; // full loops before landing
+        const extraLoops = 2; // fewer extra loops to slow the stop
         stepsRemaining += extraLoops * 10;
 
-        // Làm chậm tick để giảm tải cho browser
-        let stepDelay = 80; // tăng từ 60 → 80ms
-        let slowStep = 10; // tăng từ 8 → 10
-        const maxDelay = 400; // tăng từ 320 → 400ms
+        // Slow-down timing (increase values to slow the stop)
+        let stepDelay = 60; // ms start speed
+        let slowStep = 10;
+        const maxDelay = 500;
 
         // Hàm tick để quay về target
         const tick = () => {

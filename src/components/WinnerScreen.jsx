@@ -41,7 +41,7 @@ export default function WinnerScreen({ winner, prizeType, onNext }) {
     rounded-full
      
     px-10 py-3
-    text-xl font-semibold tracking-wide uppercase
+    text-3xl font-semibold tracking-wide uppercase
     text-[#134A46]               /* dark teal text */
 
     bg-[linear-gradient(90deg,#c69c6b,#f0d4a1,#c69c6b)]   /* gold gradient */
