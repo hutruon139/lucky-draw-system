@@ -58,7 +58,7 @@ body {
 /* PHASE 1 — infinite spin */
 .reel-spin {
   /* Làm chậm animation để dễ nhìn hơn: 1.2s → 1.8s */
-  animation: reel-scroll 25s linear infinite;
+  animation: reel-scroll 50s linear infinite;
   /* Force GPU acceleration để tránh jank */
   will-change: transform;
   transform: translateZ(0);

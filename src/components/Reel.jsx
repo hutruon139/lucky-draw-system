@@ -65,7 +65,6 @@ export default function Reel({ targetDigit = 0, spinning, delay = 0 }) {
       }
 
       clearTick();
-
       // Đọc vị trí trong requestAnimationFrame để đảm bảo đọc được khi animation đang chạy
       requestAnimationFrame(() => {
         // ĐỌC kích thước NGAY TẠI ĐÂY từ DOM thực tế (dùng cache)
@@ -109,13 +108,13 @@ export default function Reel({ targetDigit = 0, spinning, delay = 0 }) {
         // Forward-only steps; add loops for smoother stop
         let stepsRemaining = target - currentDigit;
         if (stepsRemaining < 0) stepsRemaining += 10;
-        const extraLoops = 2; // fewer extra loops to slow the stop
+        const extraLoops = 1; // fewer extra loops to slow the stop
         stepsRemaining += extraLoops * 10;
 
         // Slow-down timing (increase values to slow the stop)
-        let stepDelay = 60; // ms start speed
+        let stepDelay = 200; // ms start speed
         let slowStep = 10;
-        const maxDelay = 500;
+        const maxDelay = 300;
 
         // Hàm tick để quay về target
         const tick = () => {
