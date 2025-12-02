@@ -16,6 +16,7 @@ export default function SpinPage() {
     prizeQueue,
     currentPrizeIndex,
     resetDraws,
+    remaining,
   } = usePrizeFlow(flowKey);
   const [pendingNavigation, setPendingNavigation] = useState(false);
   const [targetNumber, setTargetNumber] = useState(null);
@@ -28,6 +29,10 @@ export default function SpinPage() {
     : prizeQueue.length && currentPrizeIndex >= prizeQueue.length
     ? "All prizes drawn"
     : "Loading queue...";
+
+  useEffect(() => {
+    console.log(`[FLOW:${flowKey}] contestants left: ${remaining}`);
+  }, [remaining, flowKey]);
 
   const handleStart = () => {
     if (!currentPrize?.participant?.number) return;
