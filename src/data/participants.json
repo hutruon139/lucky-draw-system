@@ -343,24 +343,10 @@
     "isEligible": true
   },
   {
-    "number": "050",
-    "company": "Công ty Hữu Thành",
-    "name": "Chung Thị Thanh Thúy",
-    "isRigged": false,
-    "isEligible": true
-  },
-  {
     "number": "051",
     "company": "Công ty Trần Thị Ngoan",
     "name": "Lê Trần Dũng",
     "isRigged": true,
-    "isEligible": true
-  },
-  {
-    "number": "052",
-    "company": "DNTN Tân Thành",
-    "name": "Trần Mến",
-    "isRigged": false,
     "isEligible": true
   },
   {
@@ -381,20 +367,6 @@
     "number": "055",
     "company": "Công ty Vĩnh Lộc",
     "name": "Trương Thị Liễu Trâm",
-    "isRigged": false,
-    "isEligible": true
-  },
-  {
-    "number": "056",
-    "company": "Công ty Kim Phong",
-    "name": "Tay Han Tiong",
-    "isRigged": false,
-    "isEligible": true
-  },
-  {
-    "number": "057",
-    "company": "Công ty Toan Vân",
-    "name": "Mai Thị Tươi",
     "isRigged": false,
     "isEligible": true
   },
@@ -423,13 +395,6 @@
     "number": "061",
     "company": "Công ty An Hưng",
     "name": "Kha Anh Thư",
-    "isRigged": false,
-    "isEligible": true
-  },
-  {
-    "number": "062",
-    "company": "Công ty Tân Cảng Hiệp Phước",
-    "name": "Nguyễn Thị Thúy Hằng",
     "isRigged": false,
     "isEligible": true
   },
@@ -463,7 +428,7 @@
   },
   {
     "number": "067",
-    "company": "Công ty Young-Inh .",
+    "company": "Công ty Young-Inh",
     "name": "Injoon Song",
     "isRigged": false,
     "isEligible": true
