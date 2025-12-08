@@ -71,7 +71,7 @@ export default function SpinPage() {
               setTimeout(() => {
                 navigate("/winner");
                 setPendingNavigation(false);
-              }, 4000);
+              }, 5000);
             }
           }}
         />
