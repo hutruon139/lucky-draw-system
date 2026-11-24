@@ -1,7 +1,7 @@
 import React from "react";
 import { zeroPad } from "../logic/utils";
 
-export default function WinnerScreen({ winner, prizeType, onNext }) {
+export default function WinnerScreen({ winner, prizeType, onNext, isLast = false }) {
   if (!winner) {
     return (
       <div className="card p-6 text-center text-slate-300">
@@ -37,6 +37,7 @@ export default function WinnerScreen({ winner, prizeType, onNext }) {
         <button
           type="button"
           onClick={onNext}
+          disabled={isLast}
           className="
     rounded-full
      

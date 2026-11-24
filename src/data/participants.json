@@ -1,1367 +1,578 @@
 [
   {
-    "number": "001",
-    "company": "Công ty Phủ Quỳ",
-    "name": "Trần Công Thư",
-    "isRigged": true,
-    "isEligible": true
-  },
-  {
-    "number": "002",
-    "company": "Công ty Việt Mỹ",
-    "name": "Nguyễn Thị Châu Loan",
-    "isRigged": true,
-    "isEligible": true
-  },
-  {
-    "number": "003",
-    "company": "Công ty Bắc Hà Tĩnh",
-    "name": "Nguyễn Thanh Tùng",
-    "isRigged": true,
-    "isEligible": true
-  },
-  {
-    "number": "004",
-    "company": "Công ty Phong Trang",
-    "name": "Nguyễn Đình Đông",
-    "isRigged": false,
-    "isEligible": true
-  },
-  {
-    "number": "005",
-    "company": "Công ty Cường Liên",
-    "name": "Lê Xuân Cường",
-    "isRigged": false,
-    "isEligible": true
-  },
-  {
-    "number": "006",
-    "company": "Xí Nghiệp Tổng hợp đường 8",
-    "name": "Nguyễn Nhật Trung",
-    "isRigged": false,
-    "isEligible": true
-  },
-  {
-    "number": "007",
-    "company": "Công ty Nam Hằng",
-    "name": "Tống Viết Nam",
-    "isRigged": false,
-    "isEligible": true
-  },
-  {
-    "number": "008",
-    "company": "Công ty Thiệu Yên Thanh Hoá",
-    "name": "Trịnh Xuân Tấn",
-    "isRigged": false,
-    "isEligible": true
-  },
-  {
-    "number": "009",
-    "company": "Công ty Thành Nam",
-    "name": "Lê Ngọc Hoa",
-    "isRigged": false,
-    "isEligible": true
-  },
-  {
-    "number": "010",
-    "company": "Công ty Tân An",
-    "name": "Trần Thị Dung",
-    "isRigged": false,
-    "isEligible": true
-  },
-  {
-    "number": "011",
-    "company": "Công ty Hưng Vượng",
-    "name": "Nguyễn Quốc Huy",
-    "isRigged": false,
-    "isEligible": true
-  },
-  {
-    "number": "012",
-    "company": "Công ty Tri Lịch",
-    "name": "Nguyễn Thị Lịch",
-    "isRigged": false,
-    "isEligible": true
-  },
-  {
-    "number": "013",
-    "company": "Công ty Phú Hương",
-    "name": "Nguyễn Văn Phú",
-    "isRigged": false,
-    "isEligible": true
-  },
-  {
-    "number": "014",
-    "company": "Công ty Bằng Tuyên",
-    "name": "Nguyễn Văn Bằng",
-    "isRigged": false,
-    "isEligible": true
-  },
-  {
-    "number": "015",
-    "company": "Công ty Ngọc Nhâm",
-    "name": "Nguyễn Văn Thành",
-    "isRigged": false,
-    "isEligible": true
-  },
-  {
-    "number": "016",
-    "company": "Công ty Văn Hường",
-    "name": "Vũ Thị Hồng",
-    "isRigged": false,
-    "isEligible": true
-  },
-  {
-    "number": "017",
-    "company": "Công ty Tấn Đức",
-    "name": "Nguyễn Văn Mạnh",
-    "isRigged": false,
-    "isEligible": true
-  },
-  {
-    "number": "018",
-    "company": "Công ty Minh Tân",
     "name": "Nguyễn Hữu Luận",
-    "isRigged": true,
+    "company": "Công ty Cổ phần XNK Phân bón Minh Tân",
+    "group": 1,
+    "region": "central",
+    "number": "001",
     "isEligible": true
   },
   {
-    "number": "019",
-    "company": "Công ty Thiên Long",
     "name": "Phan Ngọc Chánh",
-    "isRigged": true,
+    "company": "Công ty TNHH TM Thiên Long",
+    "group": 1,
+    "region": "central",
+    "number": "002",
     "isEligible": true
   },
   {
-    "number": "020",
-    "company": "Công ty Anh Thi",
-    "name": "Võ Duy Bách",
-    "isRigged": true,
+    "name": "Nguyễn Hữu Dược",
+    "company": "Công Ty TNHH MTV XNK Minh Dũng",
+    "group": 1,
+    "region": "southeast",
+    "number": "003",
     "isEligible": true
   },
   {
-    "number": "021",
-    "company": "Công ty Sơn Nguyệt",
-    "name": "Trần Văn Sơn",
-    "isRigged": true,
+    "name": "Trần Minh Phong",
+    "company": "Công Ty TNHH TM DV Minh Khoa",
+    "group": 1,
+    "region": "southeast",
+    "number": "004",
     "isEligible": true
   },
   {
-    "number": "022",
-    "company": "Công ty Kim Vũ Bích",
-    "name": "Trần Ngự Vũ",
-    "isRigged": true,
+    "name": "Trần Thanh Trung",
+    "company": "Công Ty TNHH Kim Ngoan",
+    "group": 1,
+    "region": "southeast",
+    "number": "005",
     "isEligible": true
   },
   {
-    "number": "023",
-    "company": "Công ty Phú Bình Gia Lai",
-    "name": "Phan Thị Anh Đào",
-    "isRigged": true,
+    "name": "Vũ Quốc Tuấn",
+    "company": "Công Ty TNHH Vận Tải Phân bón Tuấn Vũ",
+    "group": 1,
+    "region": "southeast",
+    "number": "006",
     "isEligible": true
   },
   {
-    "number": "024",
-    "company": "Công ty Nam Du Gia Lai",
-    "name": "Phạm Hồng Hậu",
-    "isRigged": true,
-    "isEligible": true
-  },
-  {
-    "number": "025",
-    "company": "Công ty Vật Tư Đà Nẵng",
-    "name": "Lưu Hữu Hải",
-    "isRigged": true,
-    "isEligible": true
-  },
-  {
-    "number": "026",
-    "company": "Công ty Hồng Cẩm",
-    "name": "Nguyễn Thị Mỹ Dung",
-    "isRigged": false,
-    "isEligible": true
-  },
-  {
-    "number": "027",
-    "company": "Công ty Quảng Ngãi",
-    "name": "Lê Văn Chiến",
-    "isRigged": false,
-    "isEligible": true
-  },
-  {
-    "number": "028",
-    "company": "Công ty T&A",
-    "name": "Mai Hữu Anh",
-    "isRigged": false,
-    "isEligible": true
-  },
-  {
-    "number": "029",
-    "company": "Công ty Đức Trung",
-    "name": "Trần Trung Việt",
-    "isRigged": false,
-    "isEligible": true
-  },
-  {
-    "number": "030",
-    "company": "Công ty Đức Xinh",
-    "name": "Trương Đức Xinh",
-    "isRigged": false,
-    "isEligible": true
-  },
-  {
-    "number": "031",
-    "company": "Công ty Thu Nghĩa",
-    "name": "Trần Ngọc Hiệp",
-    "isRigged": false,
-    "isEligible": true
-  },
-  {
-    "number": "032",
-    "company": "Công ty Đăng Khôi",
-    "name": "Lê Đức Dũng",
-    "isRigged": false,
-    "isEligible": true
-  },
-  {
-    "number": "033",
-    "company": "Công Ty Minh Dũng",
-    "name": "Dương Văn Hùng",
-    "isRigged": true,
-    "isEligible": true
-  },
-  {
-    "number": "034",
-    "company": "Công Ty Minh Khoa",
-    "name": "Trần Thị Lệ Thuỷ",
-    "isRigged": true,
-    "isEligible": true
-  },
-  {
-    "number": "035",
-    "company": "Công Ty Tuấn Vũ",
-    "name": "Đàm Thị Hải",
-    "isRigged": true,
-    "isEligible": true
-  },
-  {
-    "number": "036",
-    "company": "Công Ty Kim Ngoan",
-    "name": "Bồ Thị Kim Ngoan",
-    "isRigged": true,
-    "isEligible": true
-  },
-  {
-    "number": "037",
-    "company": "Công Ty Ngọc Vy",
-    "name": "Nguyễn Hoài Nam",
-    "isRigged": true,
-    "isEligible": true
-  },
-  {
-    "number": "038",
-    "company": "Công Ty Tân Trí Phát",
-    "name": "Lê Văn Tuấn",
-    "isRigged": false,
-    "isEligible": true
-  },
-  {
-    "number": "039",
-    "company": "Công Ty Hoa Nam",
-    "name": "Phan Thị Mỹ Huê",
-    "isRigged": false,
-    "isEligible": true
-  },
-  {
-    "number": "040",
-    "company": "Công Ty Đăng Việt Phụng",
-    "name": "Hoàng Thị Dung",
-    "isRigged": false,
-    "isEligible": true
-  },
-  {
-    "number": "041",
-    "company": "Công Ty Như Linh",
-    "name": "Trịnh Thị An",
-    "isRigged": false,
-    "isEligible": true
-  },
-  {
-    "number": "042",
-    "company": "Công Ty Hoàn Thiện",
-    "name": "Nguyễn Văn Huệ",
-    "isRigged": false,
-    "isEligible": true
-  },
-  {
-    "number": "043",
-    "company": "Công Ty Bình Hương",
-    "name": "Thái Duy Bình",
-    "isRigged": false,
-    "isEligible": true
-  },
-  {
-    "number": "044",
-    "company": "Công Ty Vương Kim Huệ",
-    "name": "Vương Thị Huệ",
-    "isRigged": false,
-    "isEligible": true
-  },
-  {
-    "number": "045",
-    "company": "Công Ty Đức Thành",
-    "name": "Lê Thị Mai Huyền",
-    "isRigged": false,
-    "isEligible": true
-  },
-  {
-    "number": "046",
-    "company": "Công ty Hưng Thạnh",
     "name": "Liêu Bích Thủy",
-    "isRigged": true,
+    "company": "Cty TNHH VTNN Hưng Thạnh",
+    "group": 1,
+    "region": "southwest",
+    "number": "007",
     "isEligible": true
   },
   {
-    "number": "047",
-    "company": "Công ty Kim Hoàng",
+    "name": "Phạm Tấn Tùng",
+    "company": "Cty TNHH TM - DV - XNK Tường Nguyên",
+    "group": 1,
+    "region": "southwest",
+    "number": "008",
+    "isEligible": true
+  },
+  {
+    "name": "Trần Công Thư",
+    "company": "Công ty Cổ phần Phân bón Phủ Quỳ",
+    "group": 1,
+    "region": "north",
+    "number": "009",
+    "isEligible": true
+  },
+  {
+    "name": "Trần Văn Sơn",
+    "company": "Công ty TNHH MTV TMDV Sơn Nguyệt",
+    "group": 2,
+    "region": "central",
+    "number": "010",
+    "isEligible": true
+  },
+  {
+    "name": "Võ Duy Bách",
+    "company": "Công ty TNHH TMDV Anh Thi",
+    "group": 2,
+    "region": "central",
+    "number": "011",
+    "isEligible": true
+  },
+  {
+    "name": "Trần Ngự Vũ",
+    "company": "Công ty TNHH TM Kim Vũ Bích",
+    "group": 2,
+    "region": "central",
+    "number": "012",
+    "isEligible": true
+  },
+  {
+    "name": "Lưu Hữu Hải",
+    "company": "Công ty Cổ phần VTNN II Đà Nẵng",
+    "group": 2,
+    "region": "central",
+    "number": "013",
+    "isEligible": true
+  },
+  {
+    "name": "Phạm Hồng Hậu",
+    "company": "Công ty TNHH Nam Du Gia Lai",
+    "group": 2,
+    "region": "central",
+    "number": "014",
+    "isEligible": true
+  },
+  {
+    "name": "Phan Thị Anh Đào",
+    "company": "Công ty Cổ phần Phú Bình Gia Lai",
+    "group": 2,
+    "region": "central",
+    "number": "015",
+    "isEligible": true
+  },
+  {
+    "name": "Nguyễn Thị Hồng Cẩm",
+    "company": "Công ty TNHH TM Hồng Cẩm",
+    "group": 2,
+    "region": "central",
+    "number": "016",
+    "isEligible": true
+  },
+  {
+    "name": "Nguyễn Hoài Nam",
+    "company": "Công ty TNHH MTV Ngọc Vy",
+    "group": 2,
+    "region": "southeast",
+    "number": "017",
+    "isEligible": true
+  },
+  {
+    "name": "Lê Văn Tuấn",
+    "company": "Công Ty TNHH TM DV Tân Trí Phát",
+    "group": 2,
+    "region": "southeast",
+    "number": "018",
+    "isEligible": true
+  },
+  {
     "name": "Huỳnh Thị Kim Hoàng",
-    "isRigged": true,
+    "company": "Công ty TNHH MTV Kim Hoàng Đồng Tháp",
+    "group": 2,
+    "region": "southwest",
+    "number": "019",
     "isEligible": true
   },
   {
-    "number": "048",
-    "company": "Công ty Út Nữ",
+    "name": "Trần Thị Ngoan",
+    "company": "Cty TNHH Trần Thị Ngoan",
+    "group": 2,
+    "region": "southwest",
+    "number": "020",
+    "isEligible": true
+  },
+  {
     "name": "Nguyễn Thị Thu Hương",
-    "isRigged": true,
+    "company": "Cty TNHH Út Nữ",
+    "group": 2,
+    "region": "southwest",
+    "number": "021",
     "isEligible": true
   },
   {
+    "name": "Nguyễn Thanh Tùng",
+    "company": "Công ty TNHH Việt Mỹ",
+    "group": 2,
+    "region": "north",
+    "number": "022",
+    "isEligible": true
+  },
+  {
+    "name": "Nguyễn Thị Châu Loan",
+    "company": "Công ty TNHH Vật tư Tổng hợp Bắc Hà Tĩnh",
+    "group": 2,
+    "region": "north",
+    "number": "023",
+    "isEligible": true
+  },
+  {
+    "name": "Trịnh Xuân Tấn",
+    "company": "Công ty Cổ phần Thương mại Thiệu Yên Thanh Hoá",
+    "group": 2,
+    "region": "north",
+    "number": "024",
+    "isEligible": true
+  },
+  {
+    "name": "Lê Văn Chiến",
+    "company": "Công ty CP VTKT NLN Quảng Ngãi",
+    "group": 3,
+    "region": "central",
+    "number": "025",
+    "isEligible": true
+  },
+  {
+    "name": "Phan Thị Thúy",
+    "company": "Công ty TNHH SX TMDV T&A",
+    "group": 3,
+    "region": "central",
+    "number": "026",
+    "isEligible": true
+  },
+  {
+    "name": "Trần Trung Việt",
+    "company": "Công ty TNHH DVNN Đức Trung",
+    "group": 3,
+    "region": "central",
+    "number": "027",
+    "isEligible": true
+  },
+  {
+    "name": "Thái Duy Bình",
+    "company": "Công ty TNHH TM&DV Bình Hương",
+    "group": 3,
+    "region": "central",
+    "number": "028",
+    "isEligible": true
+  },
+  {
+    "name": "Đặng Hải Hân",
+    "company": "Công ty TNHH Đăng Khôi VN",
+    "group": 3,
+    "region": "central",
+    "number": "029",
+    "isEligible": true
+  },
+  {
+    "name": "Trịnh Thị An",
+    "company": "Công Ty TNHH Như Linh",
+    "group": 3,
+    "region": "southeast",
+    "number": "030",
+    "isEligible": true
+  },
+  {
+    "name": "Hoàng Thị Dung",
+    "company": "Công Ty TNHH Đăng Việt Phụng",
+    "group": 3,
+    "region": "southeast",
+    "number": "031",
+    "isEligible": true
+  },
+  {
+    "name": "Lê Thị Tuyết Nhung",
+    "company": "Công Ty TNHH Vương Kim Huệ",
+    "group": 3,
+    "region": "southeast",
+    "number": "032",
+    "isEligible": true
+  },
+  {
+    "name": "Nguyễn Văn Huệ",
+    "company": "Công Ty TNHH TM - SX  Hoàn Thiện",
+    "group": 3,
+    "region": "southeast",
+    "number": "033",
+    "isEligible": true
+  },
+  {
+    "name": "Chung Văn Răng",
+    "company": "Cty TNHH Hữu Thành",
+    "group": 3,
+    "region": "southwest",
+    "number": "034",
+    "isEligible": true
+  },
+  {
+    "name": "Trần Tuyết Mai",
+    "company": "DNTN Phân bón Tân Thành",
+    "group": 3,
+    "region": "southwest",
+    "number": "035",
+    "isEligible": true
+  },
+  {
+    "name": "Nguyễn Đình Đông",
+    "company": "Công ty TNHH Thương mại Phong Trang",
+    "group": 3,
+    "region": "north",
+    "number": "036",
+    "isEligible": true
+  },
+  {
+    "name": "Trần Thị Dung",
+    "company": "Công ty TNHH Dịch vụ Tân An",
+    "group": 3,
+    "region": "north",
+    "number": "037",
+    "isEligible": true
+  },
+  {
+    "name": "Lê Tiến Thành",
+    "company": "Công ty Cổ phần Phát triển Thương mại Đầu tư Xây dựng Thành Nam Group",
+    "group": 3,
+    "region": "north",
+    "number": "038",
+    "isEligible": true
+  },
+  {
+    "name": "Nguyễn Quốc Huy",
+    "company": "Công ty Cổ phần PT Hưng Vượng",
+    "group": 3,
+    "region": "north",
+    "number": "039",
+    "isEligible": true
+  },
+  {
+    "name": "Bà Lê Thị Như Hoa",
+    "company": "Công ty TNHH VTNN Cường Liên",
+    "group": 3,
+    "region": "north",
+    "number": "040",
+    "isEligible": true
+  },
+  {
+    "name": "Tống Viết Nam",
+    "company": "Công ty TNHH VTNN Nam Hằng",
+    "group": 3,
+    "region": "north",
+    "number": "041",
+    "isEligible": true
+  },
+  {
+    "name": "Nguyễn Thị Thám",
+    "company": "Công ty Cổ phần Xây dựng và Thương mại Thành Vinh",
+    "group": 3,
+    "region": "north",
+    "number": "042",
+    "isEligible": true
+  },
+  {
+    "name": "Nguyễn Văn Thành",
+    "company": "Công ty TNHH Thương mại Ngọc Nhâm",
+    "group": 3,
+    "region": "north",
+    "number": "043",
+    "isEligible": true
+  },
+  {
+    "name": "Nguyễn Thị Lịch",
+    "company": "Công ty TNHH TM TH Tri Lịch",
+    "group": 3,
+    "region": "north",
+    "number": "044",
+    "isEligible": true
+  },
+  {
+    "name": "Nguyễn Văn Phú",
+    "company": "Công ty TNHH Phú Hương",
+    "group": 3,
+    "region": "north",
+    "number": "045",
+    "isEligible": true
+  },
+  {
+    "name": "Trương Đức Xinh",
+    "company": "Công ty TNHH Dịch vụ Thương mại Đức Xinh",
+    "group": 3,
+    "region": "north",
+    "number": "046",
+    "isEligible": true
+  },
+  {
+    "name": "Nguyễn Thùy Phương",
+    "company": "Công ty TNHH Văn Hường",
+    "group": 3,
+    "region": "north",
+    "number": "047",
+    "isEligible": true
+  },
+  {
+    "name": "Nguyễn Thị Thu",
+    "company": "Công ty TNHH Thu Nghĩa",
+    "group": 3,
+    "region": "north",
+    "number": "048",
+    "isEligible": true
+  },
+  {
+    "name": "Nguyễn Văn Bằng",
+    "company": "Công ty TNHH Bằng Tuyên",
+    "group": 3,
+    "region": "north",
     "number": "049",
-    "company": "Công ty Tường Nguyên",
-    "name": "Lê Thị Hoa",
-    "isRigged": false,
     "isEligible": true
   },
   {
+    "name": "Nguyễn Văn Mạnh",
+    "company": "Công ty TNHH DVTM Tấn Đức",
+    "group": 3,
+    "region": "north",
+    "number": "050",
+    "isEligible": true
+  },
+  {
+    "name": "Hoàng Nam",
+    "company": "Công ty TNHH Vật tư Nông nghiệp, Xây dựng Anh Thái",
+    "group": 3,
+    "region": "north",
     "number": "051",
-    "company": "Công ty Trần Thị Ngoan",
-    "name": "Lê Trần Dũng",
-    "isRigged": true,
     "isEligible": true
   },
   {
-    "number": "053",
-    "company": "Công ty F.A",
-    "name": "Hoàng Thị Đào",
-    "isRigged": false,
-    "isEligible": true
-  },
-  {
-    "number": "054",
-    "company": "Công ty Hóa chất Phú Mỹ",
-    "name": "Vũ Thị Kim Dung",
-    "isRigged": false,
-    "isEligible": true
-  },
-  {
-    "number": "055",
-    "company": "Công ty Vĩnh Lộc",
-    "name": "Trương Thị Liễu Trâm",
-    "isRigged": false,
-    "isEligible": true
-  },
-  {
-    "number": "058",
-    "company": "Công ty Cảng Quy Nhơn",
-    "name": "Đặng Quốc Thiện",
-    "isRigged": false,
-    "isEligible": true
-  },
-  {
-    "number": "059",
-    "company": "Công ty Thoresen Vinama",
-    "name": "Đào Chí Thiết",
-    "isRigged": false,
-    "isEligible": true
-  },
-  {
-    "number": "060",
-    "company": "Công ty Cảng Phú Mỹ",
-    "name": "Trương Đình Tri",
-    "isRigged": false,
-    "isEligible": true
-  },
-  {
-    "number": "061",
-    "company": "Công ty An Hưng",
-    "name": "Kha Anh Thư",
-    "isRigged": false,
-    "isEligible": true
-  },
-  {
-    "number": "063",
-    "company": "Công ty Falcon",
-    "name": "Hoàng Thị Hồng",
-    "isRigged": false,
-    "isEligible": true
-  },
-  {
-    "number": "064",
-    "company": "Công ty Sago",
-    "name": "Bùi Văn Quản",
-    "isRigged": false,
-    "isEligible": true
-  },
-  {
-    "number": "065",
-    "company": "Công ty Hoàng Ngân",
     "name": "Nghiêm Thị Nhung",
-    "isRigged": false,
+    "company": "Công ty TNHH Hoàng Ngân",
+    "group": 3,
+    "region": "logistics",
+    "number": "052",
     "isEligible": true
   },
   {
-    "number": "066",
-    "company": "Công ty Samsung",
+    "name": "Nguyễn Ngọc Thạch",
+    "company": "Công ty CP Lân nung chảy Văn Điển",
+    "group": 3,
+    "region": "logistics",
+    "number": "053",
+    "isEligible": true
+  },
+  {
+    "name": "Đặng Quốc Thiện",
+    "company": "Công ty TNHH MTV Dịch vụ Logistic Cảng Quy Nhơn",
+    "group": 3,
+    "region": "logistics",
+    "number": "054",
+    "isEligible": true
+  },
+  {
+    "name": "Đào Chí Thiết",
+    "company": "Công ty TNHH Thoresen Vinama Logistics",
+    "group": 3,
+    "region": "logistics",
+    "number": "055",
+    "isEligible": true
+  },
+  {
+    "name": "Nguyễn Quang Vinh",
+    "company": "Công ty TNHH DV và VT Tín Nghĩa",
+    "group": 3,
+    "region": "logistics",
+    "number": "056",
+    "isEligible": true
+  },
+  {
+    "name": "Nguyễn Thị Phương Thảo",
+    "company": "Công ty TNHH DV và VT Tín Nghĩa",
+    "group": 3,
+    "region": "logistics",
+    "number": "057",
+    "isEligible": true
+  },
+  {
+    "name": "Lê Nguyễn Lâm Hương",
+    "company": "Công ty TNHH Quốc Tế Lá Xanh (GLC)",
+    "group": 3,
+    "region": "logistics",
+    "number": "058",
+    "isEligible": true
+  },
+  {
+    "name": "Hoàng Thị Hồng",
+    "company": "Công ty TNHH Kim Đô Việt Nam",
+    "group": 3,
+    "region": "logistics",
+    "number": "059",
+    "isEligible": true
+  },
+  {
+    "name": "Hà Thị Tuyết Lan",
+    "company": "Công ty bảo hiểm PVI HCM",
+    "group": 3,
+    "region": "logistics",
+    "number": "060",
+    "isEligible": true
+  },
+  {
+    "name": "Nhị Phương",
+    "company": "Công ty CP Cảng DVDK TH Phú Mỹ (PTSC Phú Mỹ)",
+    "group": 3,
+    "region": "logistics",
+    "number": "061",
+    "isEligible": true
+  },
+  {
     "name": "Lee Yong Seok",
-    "isRigged": false,
+    "company": "Samsung C&T",
+    "group": 3,
+    "region": "xnk",
+    "number": "062",
     "isEligible": true
   },
   {
-    "number": "067",
-    "company": "Công ty Young-Inh",
     "name": "Injoon Song",
-    "isRigged": false,
+    "company": "Young-Inh Corp.",
+    "group": 3,
+    "region": "xnk",
+    "number": "063",
     "isEligible": true
   },
   {
-    "number": "068",
-    "company": "Công ty Pacific Rim",
     "name": "Trần Thị Mai Lan",
-    "isRigged": false,
+    "company": "Pacific Rim Company",
+    "group": 3,
+    "region": "xnk",
+    "number": "064",
     "isEligible": true
   },
   {
-    "number": "069",
-    "company": "Công ty Liven Nutrients",
     "name": "Trần Thanh Linh My",
-    "isRigged": false,
+    "company": "Liven Nutrients",
+    "group": 3,
+    "region": "xnk",
+    "number": "065",
     "isEligible": true
   },
   {
+    "name": "Ms. Valency",
+    "company": "HANWA CO., LTD.",
+    "group": 3,
+    "region": "xnk",
+    "number": "066",
+    "isEligible": true
+  },
+  {
+    "name": "Ms. Đặng Thy Mịn",
+    "company": "HANWA VIET NAM CO., LTD.",
+    "group": 3,
+    "region": "xnk",
+    "number": "067",
+    "isEligible": true
+  },
+  {
+    "name": "Hoàng Thị Đào",
+    "company": "Công ty Cổ phần F.A",
+    "group": 3,
+    "region": "chemicals",
+    "number": "068",
+    "isEligible": true
+  },
+  {
+    "name": "Nguyễn Minh Tuấn",
+    "company": "Công ty TNHH Hóa chất và Xây dựng Phú Mỹ",
+    "group": 3,
+    "region": "chemicals",
+    "number": "069",
+    "isEligible": true
+  },
+  {
+    "name": "Trương Thị Liễu Trâm",
+    "company": "Công ty TNHH TMDV và Kinh doanh Nhà Vĩnh Lộc",
+    "group": 3,
+    "region": "chemicals",
     "number": "070",
-    "company": "Công ty HANWA VIET NAM",
-    "name": "Đặng Thy Mịn",
-    "isRigged": false,
     "isEligible": true
   },
   {
+    "name": "TAY HAN TIONG",
+    "company": "Công Ty Cổ Phần Hóa Chất Kỹ Thuật Kim Phong",
+    "group": 3,
+    "region": "chemicals",
     "number": "071",
-    "company": "Công ty SSG International",
-    "name": "Nguyễn Đức An Sơn",
-    "isRigged": false,
     "isEligible": true
   },
   {
+    "name": "Tạ Thị Thanh Vân",
+    "company": "Công ty Cổ phần Thương mại Tổng hợp Toan Vân",
+    "group": 3,
+    "region": "chemicals",
     "number": "072",
-    "company": "Công ty Food Security Solutions",
-    "name": "Michel Calibuso",
-    "isRigged": false,
     "isEligible": true
-  },
-  {
-    "number": "073",
-    "company": "Khách mời",
-    "name": "Khách 073",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "074",
-    "company": "Khách mời",
-    "name": "Khách 074",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "075",
-    "company": "Khách mời",
-    "name": "Khách 075",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "076",
-    "company": "Khách mời",
-    "name": "Khách 076",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "077",
-    "company": "Khách mời",
-    "name": "Khách 077",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "078",
-    "company": "Khách mời",
-    "name": "Khách 078",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "079",
-    "company": "Khách mời",
-    "name": "Khách 079",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "080",
-    "company": "Khách mời",
-    "name": "Khách 080",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "081",
-    "company": "Khách mời",
-    "name": "Khách 081",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "082",
-    "company": "Khách mời",
-    "name": "Khách 082",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "083",
-    "company": "Khách mời",
-    "name": "Khách 083",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "084",
-    "company": "Khách mời",
-    "name": "Khách 084",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "085",
-    "company": "Khách mời",
-    "name": "Khách 085",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "086",
-    "company": "Khách mời",
-    "name": "Khách 086",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "087",
-    "company": "Khách mời",
-    "name": "Khách 087",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "088",
-    "company": "Khách mời",
-    "name": "Khách 088",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "089",
-    "company": "Khách mời",
-    "name": "Khách 089",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "090",
-    "company": "Khách mời",
-    "name": "Khách 090",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "091",
-    "company": "Khách mời",
-    "name": "Khách 091",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "092",
-    "company": "Khách mời",
-    "name": "Khách 092",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "093",
-    "company": "Khách mời",
-    "name": "Khách 093",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "094",
-    "company": "Khách mời",
-    "name": "Khách 094",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "095",
-    "company": "Khách mời",
-    "name": "Khách 095",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "096",
-    "company": "Khách mời",
-    "name": "Khách 096",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "097",
-    "company": "Khách mời",
-    "name": "Khách 097",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "098",
-    "company": "Khách mời",
-    "name": "Khách 098",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "099",
-    "company": "Khách mời",
-    "name": "Khách 099",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "100",
-    "company": "Khách mời",
-    "name": "Khách 100",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "101",
-    "company": "Khách mời",
-    "name": "Khách 101",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "102",
-    "company": "Khách mời",
-    "name": "Khách 102",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "103",
-    "company": "Khách mời",
-    "name": "Khách 103",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "104",
-    "company": "Khách mời",
-    "name": "Khách 104",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "105",
-    "company": "Khách mời",
-    "name": "Khách 105",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "106",
-    "company": "Khách mời",
-    "name": "Khách 106",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "107",
-    "company": "Khách mời",
-    "name": "Khách 107",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "108",
-    "company": "Khách mời",
-    "name": "Khách 108",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "109",
-    "company": "Khách mời",
-    "name": "Khách 109",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "110",
-    "company": "Khách mời",
-    "name": "Khách 110",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "111",
-    "company": "Khách mời",
-    "name": "Khách 111",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "112",
-    "company": "Khách mời",
-    "name": "Khách 112",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "113",
-    "company": "Khách mời",
-    "name": "Khách 113",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "114",
-    "company": "Khách mời",
-    "name": "Khách 114",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "115",
-    "company": "Khách mời",
-    "name": "Khách 115",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "116",
-    "company": "Khách mời",
-    "name": "Khách 116",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "117",
-    "company": "Khách mời",
-    "name": "Khách 117",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "118",
-    "company": "Khách mời",
-    "name": "Khách 118",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "119",
-    "company": "Khách mời",
-    "name": "Khách 119",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "120",
-    "company": "Khách mời",
-    "name": "Khách 120",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "121",
-    "company": "Khách mời",
-    "name": "Khách 121",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "122",
-    "company": "Khách mời",
-    "name": "Khách 122",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "123",
-    "company": "Khách mời",
-    "name": "Khách 123",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "124",
-    "company": "Khách mời",
-    "name": "Khách 124",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "125",
-    "company": "Khách mời",
-    "name": "Khách 125",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "126",
-    "company": "Khách mời",
-    "name": "Khách 126",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "127",
-    "company": "Khách mời",
-    "name": "Khách 127",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "128",
-    "company": "Khách mời",
-    "name": "Khách 128",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "129",
-    "company": "Khách mời",
-    "name": "Khách 129",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "130",
-    "company": "Khách mời",
-    "name": "Khách 130",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "131",
-    "company": "Khách mời",
-    "name": "Khách 131",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "132",
-    "company": "Khách mời",
-    "name": "Khách 132",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "133",
-    "company": "Khách mời",
-    "name": "Khách 133",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "134",
-    "company": "Khách mời",
-    "name": "Khách 134",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "135",
-    "company": "Khách mời",
-    "name": "Khách 135",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "136",
-    "company": "Khách mời",
-    "name": "Khách 136",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "137",
-    "company": "Khách mời",
-    "name": "Khách 137",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "138",
-    "company": "Khách mời",
-    "name": "Khách 138",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "139",
-    "company": "Khách mời",
-    "name": "Khách 139",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "140",
-    "company": "Khách mời",
-    "name": "Khách 140",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "141",
-    "company": "Khách mời",
-    "name": "Khách 141",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "142",
-    "company": "Khách mời",
-    "name": "Khách 142",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "143",
-    "company": "Khách mời",
-    "name": "Khách 143",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "144",
-    "company": "Khách mời",
-    "name": "Khách 144",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "145",
-    "company": "Khách mời",
-    "name": "Khách 145",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "146",
-    "company": "Khách mời",
-    "name": "Khách 146",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "147",
-    "company": "Khách mời",
-    "name": "Khách 147",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "148",
-    "company": "Khách mời",
-    "name": "Khách 148",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "149",
-    "company": "Khách mời",
-    "name": "Khách 149",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "150",
-    "company": "Khách mời",
-    "name": "Khách 150",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "151",
-    "company": "Khách mời",
-    "name": "Khách 151",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "152",
-    "company": "Khách mời",
-    "name": "Khách 152",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "153",
-    "company": "Khách mời",
-    "name": "Khách 153",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "154",
-    "company": "Khách mời",
-    "name": "Khách 154",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "155",
-    "company": "Khách mời",
-    "name": "Khách 155",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "156",
-    "company": "Khách mời",
-    "name": "Khách 156",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "157",
-    "company": "Khách mời",
-    "name": "Khách 157",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "158",
-    "company": "Khách mời",
-    "name": "Khách 158",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "159",
-    "company": "Khách mời",
-    "name": "Khách 159",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "160",
-    "company": "Khách mời",
-    "name": "Khách 160",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "161",
-    "company": "Khách mời",
-    "name": "Khách 161",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "162",
-    "company": "Khách mời",
-    "name": "Khách 162",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "163",
-    "company": "Khách mời",
-    "name": "Khách 163",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "164",
-    "company": "Khách mời",
-    "name": "Khách 164",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "165",
-    "company": "Khách mời",
-    "name": "Khách 165",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "166",
-    "company": "Khách mời",
-    "name": "Khách 166",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "167",
-    "company": "Khách mời",
-    "name": "Khách 167",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "168",
-    "company": "Khách mời",
-    "name": "Khách 168",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "169",
-    "company": "Khách mời",
-    "name": "Khách 169",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "170",
-    "company": "Khách mời",
-    "name": "Khách 170",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "171",
-    "company": "Khách mời",
-    "name": "Khách 171",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "172",
-    "company": "Khách mời",
-    "name": "Khách 172",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "173",
-    "company": "Khách mời",
-    "name": "Khách 173",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "174",
-    "company": "Khách mời",
-    "name": "Khách 174",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "175",
-    "company": "Khách mời",
-    "name": "Khách 175",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "176",
-    "company": "Khách mời",
-    "name": "Khách 176",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "177",
-    "company": "Khách mời",
-    "name": "Khách 177",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "178",
-    "company": "Khách mời",
-    "name": "Khách 178",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "179",
-    "company": "Khách mời",
-    "name": "Khách 179",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "180",
-    "company": "Khách mời",
-    "name": "Khách 180",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "181",
-    "company": "Khách mời",
-    "name": "Khách 181",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "182",
-    "company": "Khách mời",
-    "name": "Khách 182",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "183",
-    "company": "Khách mời",
-    "name": "Khách 183",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "184",
-    "company": "Khách mời",
-    "name": "Khách 184",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "185",
-    "company": "Khách mời",
-    "name": "Khách 185",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "186",
-    "company": "Khách mời",
-    "name": "Khách 186",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "187",
-    "company": "Khách mời",
-    "name": "Khách 187",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "188",
-    "company": "Khách mời",
-    "name": "Khách 188",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "189",
-    "company": "Khách mời",
-    "name": "Khách 189",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "190",
-    "company": "Khách mời",
-    "name": "Khách 190",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "191",
-    "company": "Khách mời",
-    "name": "Khách 191",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "192",
-    "company": "Khách mời",
-    "name": "Khách 192",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "193",
-    "company": "Khách mời",
-    "name": "Khách 193",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "194",
-    "company": "Khách mời",
-    "name": "Khách 194",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "195",
-    "company": "Khách mời",
-    "name": "Khách 195",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "196",
-    "company": "Khách mời",
-    "name": "Khách 196",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "197",
-    "company": "Khách mời",
-    "name": "Khách 197",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "198",
-    "company": "Khách mời",
-    "name": "Khách 198",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "199",
-    "company": "Khách mời",
-    "name": "Khách 199",
-    "isRigged": false,
-    "isEligible": false
-  },
-  {
-    "number": "200",
-    "company": "Khách mời",
-    "name": "Khách 200",
-    "isRigged": false,
-    "isEligible": false
   }
 ]
