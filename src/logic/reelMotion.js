@@ -1,4 +1,4 @@
-export const SPEED = 0.03; // digits per millisecond
+export const SPEED = 0.01; // digits per millisecond
 export const ACCELERATION_MS = 450;
 export function spinDistance(elapsed) {
   const t = Math.max(0, elapsed);
