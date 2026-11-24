@@ -1,57 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import SlotMachine from "../components/SlotMachine";
-import { formatTicket } from "../logic/spin";
 import { usePrizeFlow } from "../components/PrizeFlowManager";
 import backgroundImage from "../../assets/background.svg";
 
 export default function SpinPage() {
   const navigate = useNavigate();
-  const flowKey = import.meta.env.VITE_FLOW_MODE || "secondThird";
-  const {
-    startSpin,
-    stopSpin,
-    isSpinning,
-    currentPrize,
-    prizeQueue,
-    currentPrizeIndex,
-    resetDraws,
-    remaining,
-  } = usePrizeFlow(flowKey);
-  const [pendingNavigation, setPendingNavigation] = useState(false);
-  const [targetNumber, setTargetNumber] = useState(null);
-  const [frozenNumber, setFrozenNumber] = useState(null);
-  const [testReelIdx, setTestReelIdx] = useState(0);
-  const [testDigit, setTestDigit] = useState("0");
-
-  const prizeLabel = currentPrize
-    ? currentPrize.prizeType.toUpperCase()
-    : prizeQueue.length && currentPrizeIndex >= prizeQueue.length
-    ? "All prizes drawn"
-    : "Loading queue...";
-
+  const { startSpin, stopSpin, finishSpin, isSpinning, phase, lastPrize, complete } = usePrizeFlow();
   useEffect(() => {
-    console.log(`[FLOW:${flowKey}] contestants left: ${remaining}`);
-  }, [remaining, flowKey]);
-
-  const handleStart = () => {
-    if (!currentPrize?.participant?.number) return;
-    setPendingNavigation(false);
-    setTargetNumber(formatTicket(currentPrize.participant.number)); // store 3-digit target padded
-    setFrozenNumber(null);
-    startSpin();
-  };
-
-  const handleStop = () => {
-    if (!targetNumber) {
-      return;
-    }
-    setFrozenNumber(targetNumber); // set target first so reels read it immediately
-    // tell reels to land and advance prize index
-    stopSpin();
-    setPendingNavigation(true);
-  };
-
+    if (phase !== "winner") return;
+    const timer = setTimeout(() => navigate("/winner", { replace: true }), 1500);
+    return () => clearTimeout(timer);
+  }, [phase, navigate]);
+  const handleStart = () => startSpin();
+  const handleStop = () => stopSpin();
   return (
     <div
       className="relative flex min-h-screen items-center justify-center overflow-hidden px-4 py-12"
@@ -64,16 +26,9 @@ export default function SpinPage() {
       <div className="h-36" />
       <div className="relative w-full max-w-4xl space-y-8 text-center text-white">
         <SlotMachine
-          winningNumber={frozenNumber || undefined}
+          winningNumber={lastPrize?.participant.number || "000"}
           isSpinning={isSpinning}
-          onSettled={() => {
-            if (pendingNavigation) {
-              setTimeout(() => {
-                navigate("/winner");
-                setPendingNavigation(false);
-              }, 5000);
-            }
-          }}
+          onSettled={finishSpin}
         />
 
         {/* ✅ buttons now directly under SlotMachine */}
@@ -82,7 +37,7 @@ export default function SpinPage() {
             <ActionButton
               label="BẮT ĐẦU"
               onClick={handleStart}
-              disabled={isSpinning}
+              disabled={phase !== "idle" || complete}
               gradient="bg-[linear-gradient(90deg,#c69c6b,#f0d4a1,#c69c6b)]"
               textClass="text-teal-800"
             />

@@ -6,36 +6,20 @@ import backgroundImage from "../../assets/background.svg";
 
 export default function WinnerPage() {
   const navigate = useNavigate();
-  const flowKey = import.meta.env.VITE_FLOW_MODE || "secondThird";
-  const { lastPrize, currentParticipant, nextDraw } = usePrizeFlow(flowKey);
-
+  const { lastPrize, phase, nextDraw } = usePrizeFlow();
   useEffect(() => {
-    if (!lastPrize || !currentParticipant) {
-      navigate("/");
-    }
-  }, [lastPrize, currentParticipant, navigate]);
-
+    if (phase !== "winner" || !lastPrize) navigate("/", { replace: true });
+  }, [lastPrize, phase, navigate]);
   const handleNext = () => {
-    nextDraw();
-    navigate("/");
+    if (nextDraw()) navigate("/", { replace: true });
   };
-
   return (
-    <div
-      className="relative flex min-h-screen items-center justify-center overflow-hidden px-4 py-12"
-      style={{
-        backgroundImage: `url(${backgroundImage})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
-    >
+    <div className="relative flex min-h-screen items-center justify-center overflow-hidden px-4 py-12"
+      style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: "cover", backgroundPosition: "center" }}>
       <div className="absolute inset-0 bg-gradient-to-b" />
       <div className="relative">
-        <WinnerScreen
-          winner={currentParticipant}
-          prizeType={lastPrize?.prizeType}
-          onNext={handleNext}
-        />
+        <WinnerScreen winner={lastPrize?.participant} prizeType={lastPrize?.prizeType}
+          onNext={handleNext} isLast={lastPrize?.prizeType === "special"} />
       </div>
     </div>
   );
