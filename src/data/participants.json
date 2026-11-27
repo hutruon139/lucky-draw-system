@@ -1,578 +1,429 @@
 [
   {
-    "name": "Nguyễn Hữu Luận",
-    "company": "Công ty Cổ phần XNK Phân bón Minh Tân",
-    "group": 1,
-    "region": "central",
-    "number": "001",
+    "number": "25",
+    "name": "Ông Lê Văn Chiến",
+    "distributor": "NPP Quảng Ngãi - Khu vực Miền Trung",
+    "pool": "third",
     "isEligible": true
   },
   {
-    "name": "Phan Ngọc Chánh",
-    "company": "Công ty TNHH TM Thiên Long",
-    "group": 1,
-    "region": "central",
-    "number": "002",
+    "number": "26",
+    "name": "Bà Phan Thị Thúy",
+    "distributor": "NPP T&A - Khu vực Miền Trung",
+    "pool": "third",
     "isEligible": true
   },
   {
-    "name": "Nguyễn Hữu Dược",
-    "company": "Công Ty TNHH MTV XNK Minh Dũng",
-    "group": 1,
-    "region": "southeast",
-    "number": "003",
+    "number": "27",
+    "name": "Ông Trần Trung Việt",
+    "distributor": "NPP Đức Trung - Khu vực Miền Trung",
+    "pool": "third",
     "isEligible": true
   },
   {
-    "name": "Trần Minh Phong",
-    "company": "Công Ty TNHH TM DV Minh Khoa",
-    "group": 1,
-    "region": "southeast",
-    "number": "004",
+    "number": "28",
+    "name": "Ông Thái Duy Bình",
+    "distributor": "NPP Bình Hương - Khu vực Miền Trung",
+    "pool": "third",
     "isEligible": true
   },
   {
-    "name": "Trần Thanh Trung",
-    "company": "Công Ty TNHH Kim Ngoan",
-    "group": 1,
-    "region": "southeast",
-    "number": "005",
+    "number": "29",
+    "name": "Ông Đặng Hải Hân",
+    "distributor": "NPP Đăng Khôi VN - Khu vực Miền Trung",
+    "pool": "third",
     "isEligible": true
   },
   {
-    "name": "Vũ Quốc Tuấn",
-    "company": "Công Ty TNHH Vận Tải Phân bón Tuấn Vũ",
-    "group": 1,
-    "region": "southeast",
-    "number": "006",
+    "number": "30",
+    "name": "Bà Trịnh Thị An",
+    "distributor": "NPP Như Linh - Khu vực Đông Nam Bộ",
+    "pool": "third",
     "isEligible": true
   },
   {
-    "name": "Liêu Bích Thủy",
-    "company": "Cty TNHH VTNN Hưng Thạnh",
-    "group": 1,
-    "region": "southwest",
-    "number": "007",
+    "number": "31",
+    "name": "Bà Hoàng Thị Dung",
+    "distributor": "NPP Đăng Việt Phụng - Khu vực Đông Nam Bộ",
+    "pool": "third",
     "isEligible": true
   },
   {
-    "name": "Phạm Tấn Tùng",
-    "company": "Cty TNHH TM - DV - XNK Tường Nguyên",
-    "group": 1,
-    "region": "southwest",
-    "number": "008",
+    "number": "32",
+    "name": "Bà Lê Thị Tuyết Nhung",
+    "distributor": "NPP Vương Kim Huệ - Khu vực Đông Nam Bộ",
+    "pool": "third",
     "isEligible": true
   },
   {
-    "name": "Trần Công Thư",
-    "company": "Công ty Cổ phần Phân bón Phủ Quỳ",
-    "group": 1,
-    "region": "north",
-    "number": "009",
+    "number": "33",
+    "name": "Ông Nguyễn Văn Huệ",
+    "distributor": "NPP Hoàn Thiện - Khu vực Đông Nam Bộ",
+    "pool": "third",
     "isEligible": true
   },
   {
-    "name": "Trần Văn Sơn",
-    "company": "Công ty TNHH MTV TMDV Sơn Nguyệt",
-    "group": 2,
-    "region": "central",
-    "number": "010",
+    "number": "34",
+    "name": "Ông Chung Văn Răng",
+    "distributor": "NPP Hữu Thành - Khu vực Miền Bắc",
+    "pool": "third",
     "isEligible": true
   },
   {
-    "name": "Võ Duy Bách",
-    "company": "Công ty TNHH TMDV Anh Thi",
-    "group": 2,
-    "region": "central",
-    "number": "011",
+    "number": "35",
+    "name": "Bà Trần Tuyết Mai",
+    "distributor": "NPP Tân Thành - Khu vực Miền Bắc",
+    "pool": "third",
     "isEligible": true
   },
   {
-    "name": "Trần Ngự Vũ",
-    "company": "Công ty TNHH TM Kim Vũ Bích",
-    "group": 2,
-    "region": "central",
-    "number": "012",
+    "number": "36",
+    "name": "Ông Nguyễn Đình Đông",
+    "distributor": "NPP Phong Trang - Khu vực Miền Bắc",
+    "pool": "third",
     "isEligible": true
   },
   {
-    "name": "Lưu Hữu Hải",
-    "company": "Công ty Cổ phần VTNN II Đà Nẵng",
-    "group": 2,
-    "region": "central",
-    "number": "013",
+    "number": "37",
+    "name": "Bà Trần Thị Dung",
+    "distributor": "NPP Tân An - Khu vực Miền Bắc",
+    "pool": "third",
     "isEligible": true
   },
   {
-    "name": "Phạm Hồng Hậu",
-    "company": "Công ty TNHH Nam Du Gia Lai",
-    "group": 2,
-    "region": "central",
-    "number": "014",
+    "number": "38",
+    "name": "Ông Lê Tiến Thành",
+    "distributor": "NPP Thành Nam - Khu vực Miền Bắc",
+    "pool": "third",
     "isEligible": true
   },
   {
-    "name": "Phan Thị Anh Đào",
-    "company": "Công ty Cổ phần Phú Bình Gia Lai",
-    "group": 2,
-    "region": "central",
-    "number": "015",
+    "number": "39",
+    "name": "Ông Nguyễn Quốc Huy",
+    "distributor": "NPP Hưng Vượng - Khu vực Miền Bắc",
+    "pool": "third",
     "isEligible": true
   },
   {
-    "name": "Nguyễn Thị Hồng Cẩm",
-    "company": "Công ty TNHH TM Hồng Cẩm",
-    "group": 2,
-    "region": "central",
-    "number": "016",
-    "isEligible": true
-  },
-  {
-    "name": "Nguyễn Hoài Nam",
-    "company": "Công ty TNHH MTV Ngọc Vy",
-    "group": 2,
-    "region": "southeast",
-    "number": "017",
-    "isEligible": true
-  },
-  {
-    "name": "Lê Văn Tuấn",
-    "company": "Công Ty TNHH TM DV Tân Trí Phát",
-    "group": 2,
-    "region": "southeast",
-    "number": "018",
-    "isEligible": true
-  },
-  {
-    "name": "Huỳnh Thị Kim Hoàng",
-    "company": "Công ty TNHH MTV Kim Hoàng Đồng Tháp",
-    "group": 2,
-    "region": "southwest",
-    "number": "019",
-    "isEligible": true
-  },
-  {
-    "name": "Trần Thị Ngoan",
-    "company": "Cty TNHH Trần Thị Ngoan",
-    "group": 2,
-    "region": "southwest",
-    "number": "020",
-    "isEligible": true
-  },
-  {
-    "name": "Nguyễn Thị Thu Hương",
-    "company": "Cty TNHH Út Nữ",
-    "group": 2,
-    "region": "southwest",
-    "number": "021",
-    "isEligible": true
-  },
-  {
-    "name": "Nguyễn Thanh Tùng",
-    "company": "Công ty TNHH Việt Mỹ",
-    "group": 2,
-    "region": "north",
-    "number": "022",
-    "isEligible": true
-  },
-  {
-    "name": "Nguyễn Thị Châu Loan",
-    "company": "Công ty TNHH Vật tư Tổng hợp Bắc Hà Tĩnh",
-    "group": 2,
-    "region": "north",
-    "number": "023",
-    "isEligible": true
-  },
-  {
-    "name": "Trịnh Xuân Tấn",
-    "company": "Công ty Cổ phần Thương mại Thiệu Yên Thanh Hoá",
-    "group": 2,
-    "region": "north",
-    "number": "024",
-    "isEligible": true
-  },
-  {
-    "name": "Lê Văn Chiến",
-    "company": "Công ty CP VTKT NLN Quảng Ngãi",
-    "group": 3,
-    "region": "central",
-    "number": "025",
-    "isEligible": true
-  },
-  {
-    "name": "Phan Thị Thúy",
-    "company": "Công ty TNHH SX TMDV T&A",
-    "group": 3,
-    "region": "central",
-    "number": "026",
-    "isEligible": true
-  },
-  {
-    "name": "Trần Trung Việt",
-    "company": "Công ty TNHH DVNN Đức Trung",
-    "group": 3,
-    "region": "central",
-    "number": "027",
-    "isEligible": true
-  },
-  {
-    "name": "Thái Duy Bình",
-    "company": "Công ty TNHH TM&DV Bình Hương",
-    "group": 3,
-    "region": "central",
-    "number": "028",
-    "isEligible": true
-  },
-  {
-    "name": "Đặng Hải Hân",
-    "company": "Công ty TNHH Đăng Khôi VN",
-    "group": 3,
-    "region": "central",
-    "number": "029",
-    "isEligible": true
-  },
-  {
-    "name": "Trịnh Thị An",
-    "company": "Công Ty TNHH Như Linh",
-    "group": 3,
-    "region": "southeast",
-    "number": "030",
-    "isEligible": true
-  },
-  {
-    "name": "Hoàng Thị Dung",
-    "company": "Công Ty TNHH Đăng Việt Phụng",
-    "group": 3,
-    "region": "southeast",
-    "number": "031",
-    "isEligible": true
-  },
-  {
-    "name": "Lê Thị Tuyết Nhung",
-    "company": "Công Ty TNHH Vương Kim Huệ",
-    "group": 3,
-    "region": "southeast",
-    "number": "032",
-    "isEligible": true
-  },
-  {
-    "name": "Nguyễn Văn Huệ",
-    "company": "Công Ty TNHH TM - SX  Hoàn Thiện",
-    "group": 3,
-    "region": "southeast",
-    "number": "033",
-    "isEligible": true
-  },
-  {
-    "name": "Chung Văn Răng",
-    "company": "Cty TNHH Hữu Thành",
-    "group": 3,
-    "region": "southwest",
-    "number": "034",
-    "isEligible": true
-  },
-  {
-    "name": "Trần Tuyết Mai",
-    "company": "DNTN Phân bón Tân Thành",
-    "group": 3,
-    "region": "southwest",
-    "number": "035",
-    "isEligible": true
-  },
-  {
-    "name": "Nguyễn Đình Đông",
-    "company": "Công ty TNHH Thương mại Phong Trang",
-    "group": 3,
-    "region": "north",
-    "number": "036",
-    "isEligible": true
-  },
-  {
-    "name": "Trần Thị Dung",
-    "company": "Công ty TNHH Dịch vụ Tân An",
-    "group": 3,
-    "region": "north",
-    "number": "037",
-    "isEligible": true
-  },
-  {
-    "name": "Lê Tiến Thành",
-    "company": "Công ty Cổ phần Phát triển Thương mại Đầu tư Xây dựng Thành Nam Group",
-    "group": 3,
-    "region": "north",
-    "number": "038",
-    "isEligible": true
-  },
-  {
-    "name": "Nguyễn Quốc Huy",
-    "company": "Công ty Cổ phần PT Hưng Vượng",
-    "group": 3,
-    "region": "north",
-    "number": "039",
-    "isEligible": true
-  },
-  {
+    "number": "40",
     "name": "Bà Lê Thị Như Hoa",
-    "company": "Công ty TNHH VTNN Cường Liên",
-    "group": 3,
-    "region": "north",
-    "number": "040",
+    "distributor": "NPP Cường Liên - Khu vực Miền Bắc",
+    "pool": "third",
     "isEligible": true
   },
   {
-    "name": "Tống Viết Nam",
-    "company": "Công ty TNHH VTNN Nam Hằng",
-    "group": 3,
-    "region": "north",
-    "number": "041",
+    "number": "41",
+    "name": "Ông Tống Viết Nam",
+    "distributor": "NPP Nam Hằng - Khu vực Miền Bắc",
+    "pool": "third",
     "isEligible": true
   },
   {
-    "name": "Nguyễn Thị Thám",
-    "company": "Công ty Cổ phần Xây dựng và Thương mại Thành Vinh",
-    "group": 3,
-    "region": "north",
-    "number": "042",
+    "number": "42",
+    "name": "Bà Nguyễn Thị Thám",
+    "distributor": "NPP Thành Vinh - Khu vực Miền Bắc",
+    "pool": "third",
     "isEligible": true
   },
   {
-    "name": "Nguyễn Văn Thành",
-    "company": "Công ty TNHH Thương mại Ngọc Nhâm",
-    "group": 3,
-    "region": "north",
-    "number": "043",
+    "number": "43",
+    "name": "Ông Nguyễn Văn Thành",
+    "distributor": "NPP Ngọc Nhâm - Khu vực Miền Bắc",
+    "pool": "third",
     "isEligible": true
   },
   {
-    "name": "Nguyễn Thị Lịch",
-    "company": "Công ty TNHH TM TH Tri Lịch",
-    "group": 3,
-    "region": "north",
-    "number": "044",
+    "number": "44",
+    "name": "Bà Nguyễn Thị Lịch",
+    "distributor": "NPP Tri Lịch - Khu vực Miền Bắc",
+    "pool": "third",
     "isEligible": true
   },
   {
-    "name": "Nguyễn Văn Phú",
-    "company": "Công ty TNHH Phú Hương",
-    "group": 3,
-    "region": "north",
-    "number": "045",
+    "number": "45",
+    "name": "Ông Nguyễn Văn Phú",
+    "distributor": "NPP Phú Hương - Khu vực Miền Bắc",
+    "pool": "third",
     "isEligible": true
   },
   {
-    "name": "Trương Đức Xinh",
-    "company": "Công ty TNHH Dịch vụ Thương mại Đức Xinh",
-    "group": 3,
-    "region": "north",
-    "number": "046",
+    "number": "46",
+    "name": "Ông Trương Đức Xinh",
+    "distributor": "NPP Đức Xinh - Khu vực Miền Bắc",
+    "pool": "third",
     "isEligible": true
   },
   {
-    "name": "Nguyễn Thùy Phương",
-    "company": "Công ty TNHH Văn Hường",
-    "group": 3,
-    "region": "north",
-    "number": "047",
+    "number": "47",
+    "name": "Bà Nguyễn Thùy Phương",
+    "distributor": "NPP Văn Hường - Khu vực Miền Bắc",
+    "pool": "third",
     "isEligible": true
   },
   {
-    "name": "Nguyễn Thị Thu",
-    "company": "Công ty TNHH Thu Nghĩa",
-    "group": 3,
-    "region": "north",
-    "number": "048",
+    "number": "48",
+    "name": "Bà Nguyễn Thị Thu",
+    "distributor": "NPP Thu Nghĩa - Khu vực Miền Bắc",
+    "pool": "third",
     "isEligible": true
   },
   {
-    "name": "Nguyễn Văn Bằng",
-    "company": "Công ty TNHH Bằng Tuyên",
-    "group": 3,
-    "region": "north",
-    "number": "049",
+    "number": "49",
+    "name": "Ông Nguyễn Văn Bằng",
+    "distributor": "NPP Bằng Tuyên - Khu vực Miền Bắc",
+    "pool": "third",
     "isEligible": true
   },
   {
-    "name": "Nguyễn Văn Mạnh",
-    "company": "Công ty TNHH DVTM Tấn Đức",
-    "group": 3,
-    "region": "north",
-    "number": "050",
+    "number": "50",
+    "name": "Ông Nguyễn Văn Mạnh",
+    "distributor": "NPP Tấn Đức - Khu vực Miền Bắc",
+    "pool": "third",
     "isEligible": true
   },
   {
-    "name": "Hoàng Nam",
-    "company": "Công ty TNHH Vật tư Nông nghiệp, Xây dựng Anh Thái",
-    "group": 3,
-    "region": "north",
-    "number": "051",
+    "number": "51",
+    "name": "Ông Hoàng Nam",
+    "distributor": "NPP Anh Thái - Khu vực Miền Bắc",
+    "pool": "third",
     "isEligible": true
   },
   {
-    "name": "Nghiêm Thị Nhung",
-    "company": "Công ty TNHH Hoàng Ngân",
-    "group": 3,
-    "region": "logistics",
-    "number": "052",
+    "number": "52",
+    "name": "Bà Nghiêm Thị Nhung",
+    "distributor": "Công ty TNHH Hoàng Ngân",
+    "pool": "third",
     "isEligible": true
   },
   {
-    "name": "Nguyễn Ngọc Thạch",
-    "company": "Công ty CP Lân nung chảy Văn Điển",
-    "group": 3,
-    "region": "logistics",
-    "number": "053",
+    "number": "53",
+    "name": "Ông Nguyễn Ngọc Thạch",
+    "distributor": "Công ty CP Lân nung chảy Văn Điển",
+    "pool": "third",
     "isEligible": true
   },
   {
-    "name": "Đặng Quốc Thiện",
-    "company": "Công ty TNHH MTV Dịch vụ Logistic Cảng Quy Nhơn",
-    "group": 3,
-    "region": "logistics",
-    "number": "054",
+    "number": "54",
+    "name": "Ông Đặng Quốc Thiện",
+    "distributor": "Công ty TNHH MTV Dịch vụ Logistic Cảng Quy Nhơn",
+    "pool": "third",
     "isEligible": true
   },
   {
-    "name": "Đào Chí Thiết",
-    "company": "Công ty TNHH Thoresen Vinama Logistics",
-    "group": 3,
-    "region": "logistics",
-    "number": "055",
+    "number": "55",
+    "name": "Ông Đào Chí Thiết",
+    "distributor": "Công ty TNHH Thoresen Vinama Logistics",
+    "pool": "third",
     "isEligible": true
   },
   {
-    "name": "Nguyễn Quang Vinh",
-    "company": "Công ty TNHH DV và VT Tín Nghĩa",
-    "group": 3,
-    "region": "logistics",
-    "number": "056",
+    "number": "56",
+    "name": "Ông Nguyễn Quang Vinh",
+    "distributor": "Công ty TNHH DV và VT Tín Nghĩa",
+    "pool": "third",
     "isEligible": true
   },
   {
-    "name": "Nguyễn Thị Phương Thảo",
-    "company": "Công ty TNHH DV và VT Tín Nghĩa",
-    "group": 3,
-    "region": "logistics",
-    "number": "057",
+    "number": "57",
+    "name": "Bà Nguyễn Thị Phương Thảo",
+    "distributor": "Công ty TNHH DV và VT Tín Nghĩa",
+    "pool": "third",
     "isEligible": true
   },
   {
-    "name": "Lê Nguyễn Lâm Hương",
-    "company": "Công ty TNHH Quốc Tế Lá Xanh (GLC)",
-    "group": 3,
-    "region": "logistics",
-    "number": "058",
+    "number": "58",
+    "name": "Bà Lê Nguyễn Lâm Hương",
+    "distributor": "Công ty TNHH Quốc Tế Lá Xanh (GLC)",
+    "pool": "third",
     "isEligible": true
   },
   {
-    "name": "Hoàng Thị Hồng",
-    "company": "Công ty TNHH Kim Đô Việt Nam",
-    "group": 3,
-    "region": "logistics",
-    "number": "059",
+    "number": "59",
+    "name": "Bà Hoàng Thị Hồng",
+    "distributor": "Công ty TNHH Kim Đô Việt Nam",
+    "pool": "third",
     "isEligible": true
   },
   {
-    "name": "Hà Thị Tuyết Lan",
-    "company": "Công ty bảo hiểm PVI HCM",
-    "group": 3,
-    "region": "logistics",
-    "number": "060",
+    "number": "60",
+    "name": "Bà Hà Thị Tuyết Lan",
+    "distributor": "Công ty bảo hiểm PVI HCM",
+    "pool": "third",
     "isEligible": true
   },
   {
-    "name": "Nhị Phương",
-    "company": "Công ty CP Cảng DVDK TH Phú Mỹ (PTSC Phú Mỹ)",
-    "group": 3,
-    "region": "logistics",
-    "number": "061",
+    "number": "61",
+    "name": "Ông Nhị Phương",
+    "distributor": "Công ty CP Cảng DVDK TH Phú Mỹ (PTSC Phú Mỹ)",
+    "pool": "third",
     "isEligible": true
   },
   {
-    "name": "Lee Yong Seok",
-    "company": "Samsung C&T",
-    "group": 3,
-    "region": "xnk",
-    "number": "062",
+    "number": "62",
+    "name": "Ông Lee Yong Seok",
+    "distributor": "Samsung C&T",
+    "pool": "third",
     "isEligible": true
   },
   {
-    "name": "Injoon Song",
-    "company": "Young-Inh Corp.",
-    "group": 3,
-    "region": "xnk",
-    "number": "063",
+    "number": "63",
+    "name": "Ông Injoon Song",
+    "distributor": "Young-Inh Corp.",
+    "pool": "third",
     "isEligible": true
   },
   {
-    "name": "Trần Thị Mai Lan",
-    "company": "Pacific Rim Company",
-    "group": 3,
-    "region": "xnk",
-    "number": "064",
+    "number": "64",
+    "name": "Bà Trần Thị Mai Lan",
+    "distributor": "Pacific Rim Company",
+    "pool": "third",
     "isEligible": true
   },
   {
-    "name": "Trần Thanh Linh My",
-    "company": "Liven Nutrients",
-    "group": 3,
-    "region": "xnk",
-    "number": "065",
+    "number": "65",
+    "name": "Bà Trần Thanh Linh My",
+    "distributor": "Liven Nutrients",
+    "pool": "third",
     "isEligible": true
   },
   {
-    "name": "Ms. Valency",
-    "company": "HANWA CO., LTD.",
-    "group": 3,
-    "region": "xnk",
-    "number": "066",
+    "number": "66",
+    "name": "Bà Valency",
+    "distributor": "HANWA CO., LTD.",
+    "pool": "third",
     "isEligible": true
   },
   {
-    "name": "Ms. Đặng Thy Mịn",
-    "company": "HANWA VIET NAM CO., LTD.",
-    "group": 3,
-    "region": "xnk",
-    "number": "067",
+    "number": "67",
+    "name": "Bà Đặng Thy Mịn",
+    "distributor": "HANWA VIET NAM CO., LTD.",
+    "pool": "third",
     "isEligible": true
   },
   {
-    "name": "Hoàng Thị Đào",
-    "company": "Công ty Cổ phần F.A",
-    "group": 3,
-    "region": "chemicals",
-    "number": "068",
+    "number": "68",
+    "name": "Bà Hoàng Thị Đào",
+    "distributor": "Công ty Cổ phần F.A",
+    "pool": "third",
     "isEligible": true
   },
   {
-    "name": "Nguyễn Minh Tuấn",
-    "company": "Công ty TNHH Hóa chất và Xây dựng Phú Mỹ",
-    "group": 3,
-    "region": "chemicals",
-    "number": "069",
+    "number": "69",
+    "name": "Ông Nguyễn Minh Tuấn",
+    "distributor": "Công ty TNHH Hóa chất và Xây dựng Phú Mỹ",
+    "pool": "third",
     "isEligible": true
   },
   {
-    "name": "Trương Thị Liễu Trâm",
-    "company": "Công ty TNHH TMDV và Kinh doanh Nhà Vĩnh Lộc",
-    "group": 3,
-    "region": "chemicals",
-    "number": "070",
+    "number": "70",
+    "name": "Bà Trương Thị Liễu Trâm",
+    "distributor": "Công ty TNHH TMDV và Kinh doanh Nhà Vĩnh Lộc",
+    "pool": "third",
     "isEligible": true
   },
   {
-    "name": "TAY HAN TIONG",
-    "company": "Công Ty Cổ Phần Hóa Chất Kỹ Thuật Kim Phong",
-    "group": 3,
-    "region": "chemicals",
-    "number": "071",
+    "number": "71",
+    "name": "Ông Tay Han Tiong",
+    "distributor": "Công Ty Cổ Phần Hóa Chất Kỹ Thuật Kim Phong",
+    "pool": "third",
     "isEligible": true
   },
   {
-    "name": "Tạ Thị Thanh Vân",
-    "company": "Công ty Cổ phần Thương mại Tổng hợp Toan Vân",
-    "group": 3,
-    "region": "chemicals",
-    "number": "072",
+    "number": "72",
+    "name": "Bà Tạ Thị Thanh Vân",
+    "distributor": "Công ty Cổ phần Thương mại Tổng hợp Toan Vân",
+    "pool": "third",
+    "isEligible": true
+  },
+  {
+    "number": "10",
+    "name": "Ông Trần Văn Sơn",
+    "distributor": "NPP Sơn Nguyệt - Khu vực Miền Trung",
+    "pool": "main",
+    "isEligible": true
+  },
+  {
+    "number": "11",
+    "name": "Ông Võ Duy Bách",
+    "distributor": "NPP Anh Thi - Khu vực Miền Trung",
+    "pool": "main",
+    "isEligible": true
+  },
+  {
+    "number": "12",
+    "name": "Ông Trần Ngự Vũ",
+    "distributor": "NPP Kim Vũ Bích - Khu vực Miền Trung",
+    "pool": "main",
+    "isEligible": true
+  },
+  {
+    "number": "13",
+    "name": "Ông Lưu Hữu Hải",
+    "distributor": "NPP VTNN II Đà Nẵng - Khu vực Miền Trung",
+    "pool": "main",
+    "isEligible": true
+  },
+  {
+    "number": "14",
+    "name": "Ông Phạm Hồng Hậu",
+    "distributor": "NPP Nam Du Gia Lai - Khu vực Miền Trung",
+    "pool": "main",
+    "isEligible": true
+  },
+  {
+    "number": "15",
+    "name": "Bà Phan Thị Anh Đào",
+    "distributor": "NPP Phú Bình Gia Lai - Khu vực Miền Trung",
+    "pool": "main",
+    "isEligible": true
+  },
+  {
+    "number": "17",
+    "name": "Ông Nguyễn Hoài Nam",
+    "distributor": "NPP Ngọc Vy - Khu vực Đông Nam Bộ",
+    "pool": "main",
+    "isEligible": true
+  },
+  {
+    "number": "18",
+    "name": "Ông Lê Văn Tuấn",
+    "distributor": "NPP Tân Trí Phát - Khu vực Đông Nam Bộ",
+    "pool": "main",
+    "isEligible": true
+  },
+  {
+    "number": "20",
+    "name": "Bà Trần Thị Ngoan",
+    "distributor": "NPP Trần Thị Ngoan - Khu vực Tây Nam Bộ",
+    "pool": "main",
+    "isEligible": true
+  },
+  {
+    "number": "01",
+    "name": "Ông Nguyễn Hữu Luận",
+    "distributor": "NPP Minh Tân - Khu vực Miền Trung",
+    "pool": "special",
+    "isEligible": true
+  },
+  {
+    "number": "02",
+    "name": "Ông Phan Ngọc Chánh",
+    "distributor": "NPP Thiên Long - Khu vực Miền Trung",
+    "pool": "special",
+    "isEligible": true
+  },
+  {
+    "number": "04",
+    "name": "Ông Trần Minh Phong",
+    "distributor": "NPP Minh Khoa - Khu vực Đông Nam Bộ",
+    "pool": "special",
+    "isEligible": true
+  },
+  {
+    "number": "06",
+    "name": "Ông Vũ Quốc Tuấn",
+    "distributor": "NPP Tuấn Vũ - Khu vực Đông Nam Bộ",
+    "pool": "special",
     "isEligible": true
   }
 ]

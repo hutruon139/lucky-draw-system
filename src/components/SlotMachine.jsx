@@ -1,7 +1,11 @@
 import React, { useCallback, useEffect, useRef } from "react";
 import Reel from "./Reel";
 import { formatTicket } from "../logic/spin";
-export default function SlotMachine({ winningNumber = "000", isSpinning, onSettled }) {
+
+// Left edges of the two digit cells on the designer's spin screen.
+const REEL_LEFT = [1208, 1626];
+
+export default function SlotMachine({ number, isSpinning, onSettled }) {
   const done = useRef(new Set());
   const active = useRef(false);
   const callback = useRef(onSettled);
@@ -12,18 +16,14 @@ export default function SlotMachine({ winningNumber = "000", isSpinning, onSettl
   const settled = useCallback(index => {
     if (!active.current) return;
     done.current.add(index);
-    if (done.current.size === 3) {
+    if (done.current.size === REEL_LEFT.length) {
       active.current = false;
       callback.current?.();
     }
   }, []);
-  const digits = formatTicket(winningNumber).slice(-3).split("");
-  return (
-    <div className="relative flex items-center justify-center">
-      <div className="flex flex-nowrap gap-3 rounded-[28px] px-6 pt-20">
-        {digits.map((digit, idx) => <Reel key={idx} targetDigit={Number(digit)}
-          spinning={isSpinning} index={idx} onSettled={settled} />)}
-      </div>
-    </div>
-  );
+  const digits = formatTicket(number).split("");
+  return <>
+    {digits.map((digit, idx) => <Reel key={idx} targetDigit={Number(digit)} left={REEL_LEFT[idx]}
+      spinning={isSpinning} index={idx} onSettled={settled} />)}
+  </>;
 }

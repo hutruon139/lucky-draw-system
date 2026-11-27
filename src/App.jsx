@@ -1,16 +1,11 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
 import { PrizeFlowManager } from "./components/PrizeFlowManager";
-import SpinPage from "./pages/SpinPage";
-import WinnerPage from "./pages/WinnerPage";
+import DrawScreen from "./components/DrawScreen";
 
 export default function App() {
   return (
     <PrizeFlowManager>
-      <Routes>
-        <Route path="/" element={<SpinPage />} />
-        <Route path="/winner" element={<WinnerPage />} />
-      </Routes>
+      <DrawScreen />
     </PrizeFlowManager>
   );
 }

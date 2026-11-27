@@ -1,6 +1,6 @@
 # Lucky draw 2026
 
-Giữ giao diện sự kiện cũ. Chạy với Node.js 20+:
+Giao diện theo thiết kế "Trọn niềm tin – Chung bước thịnh vượng", khổ 2816×1536 đúng bằng màn LED trung tâm (tự co giãn vừa màn hình khác, không bị cắt). Chạy với Node.js 20+:
 
 ```sh
 npm ci
@@ -9,17 +9,17 @@ npm test
 npm run build
 ```
 
-## Quy tắc đã thống nhất
+## Quy tắc
 
 - 15 giải ba → 1 giải nhì → 1 giải nhất → 1 giải đặc biệt; mỗi lượt một người.
-- Giải ba: Nhóm 3 và Logistics/XNK/Hóa chất. Quota lần lượt Bắc 4, Trung 3, Đông Nam Bộ 2, Tây Nam Bộ 1, Logistics 2, XNK 2, Hóa chất 1.
-- Giải nhì và nhất: toàn bộ 15 người Nhóm 2. Dùng chung giới hạn Trung 6, Đông Nam Bộ 2, Tây Nam Bộ 1. Miền Bắc vẫn được tham gia vì yêu cầu dùng cả pool 15 người; chưa có giới hạn riêng cho miền Bắc.
-- Giải đặc biệt: 6 người Nhóm 1, gồm 2 miền Trung và 4 Đông Nam Bộ.
+- Giải ba: 48 người (Y25–Y72), quay ngẫu nhiên, không chia quota theo khu vực.
+- Giải nhì và nhất: quay chung 9 người (Y10–Y15, Y17, Y18, Y20); người đã trúng giải nhì không quay tiếp giải nhất.
+- Giải đặc biệt: 4 người (Y01, Y02, Y04, Y06).
 - Một người chỉ trúng một lần. Chọn đều giữa những người còn hợp lệ bằng Web Crypto.
 
-## Dữ liệu và vận hành
+## Dữ liệu
 
-72 người từ workbook được lưu trong `src/data/participants.json`, với mã tạm 001–072 theo thứ tự dòng nguồn. Công ty trùng nhau vẫn có thể có nhiều khách khác nhau. Không dùng STT trong Excel làm mã vì STT lặp giữa các phần.
+61 người trong `src/data/participants.json`, lấy từ file "DS CODE BỐC THĂM TRÚNG THƯỞNG": mã `Y NN` (lưu 2 chữ số), tên kèm Ông/Bà (cột E), dòng NPP hiển thị (cột D) và danh sách quay (`third`, `main` = nhất & nhì, `special`). Đặt `"isEligible": false` để loại một người vắng mặt.
 
 Nhập lại từ Excel (sẽ ghi đè danh sách JSON):
 
@@ -27,8 +27,27 @@ Nhập lại từ Excel (sẽ ghi đè danh sách JSON):
 python3 scripts/import_participants.py /path/to/data.xlsx
 ```
 
-Chỉ vận hành bằng một tab trình duyệt trên laptop rồi mirror màn hình. Phiên được lưu tại localStorage `lucky_draw_2026_v1`; reload khi đang quay giữ nguyên lựa chọn, reload sau khi nhấn Dừng sẽ khôi phục người trúng. Không có phím R reset như bản cũ. Để chạy thử lại, đóng các tab khác và xóa đúng key này trong DevTools; không xóa khi đang chạy sự kiện. Dữ liệu localStorage năm trước không được sử dụng.
+## Màn hình
 
-Sau khi ba ô thực sự dừng, giữ mã 1,5 giây rồi công bố. Màn hình chúc mừng giữ đến khi bấm Lượt tiếp theo. Sau giải đặc biệt nút này bị vô hiệu hóa. Animation dùng requestAnimationFrame, vị trí theo thời gian và transform; thay đổi kích thước không thay đổi mã đích.
+Mỗi giải có 4 màn hình: Stand by → Quay số → Công bố → Trao giải. Ảnh nằm trong `assets/screens/`; mã, tên và dòng NPP do app vẽ lên. Khi quay, số nhòe theo tốc độ rồi rõ dần khi dừng. Khi designer cập nhật ảnh, tải thư mục Drive "LUCKY DRAW" rồi chạy (cần `pip install pillow numpy`):
 
-Chưa có thiết kế mới, âm thanh, nhập danh sách qua giao diện, dashboard quota hay backend đồng bộ.
+```sh
+python3 scripts/prepare_screens.py "/path/to/LUCKY DRAW"
+```
+
+Script xóa chữ mẫu trên màn Quay số và Công bố theo vị trí trong thiết kế. Nếu bố cục thay đổi, cập nhật tọa độ trong script và trong `src/index.css`.
+
+## Vận hành
+
+| Màn hình | Thao tác |
+|---|---|
+| Stand by | Bấm **Bắt đầu**, hoặc phím Space / Enter / → / PageDown |
+| Quay số | Bấm chuột bất kỳ đâu hoặc các phím trên để dừng |
+| Công bố | Giải ba: bấm **Tiếp tục** để quay luôn lượt kế tiếp (sau người thứ 15 sang Trao giải). Giải khác: bấm chuột hoặc phím để sang Trao giải |
+| Trao giải | Bấm chuột hoặc phím để sang Stand by của giải tiếp theo |
+
+Remote trình chiếu thường gửi PageDown / → nên dùng được. Sau mỗi lần đổi màn hình, app bỏ qua thao tác trong 0,8 giây để tránh bấm đúp. Sau khi hai ô số dừng, giữ mã 1,5 giây rồi công bố. Animation dùng requestAnimationFrame, vị trí theo thời gian và transform; thay đổi kích thước không thay đổi mã đích.
+
+Chỉ vận hành bằng một tab trình duyệt trên laptop (F11 để toàn màn hình) rồi mirror màn hình. Phiên được lưu tại localStorage `lucky_draw_2026_v2`; reload khi đang quay sẽ về Stand by với đúng người đã chọn, reload sau khi dừng sẽ khôi phục người trúng. Không có phím reset. Để chạy thử lại, đóng các tab khác và xóa đúng key này trong DevTools; không xóa khi đang chạy sự kiện.
+
+Chưa có âm thanh, nhập danh sách qua giao diện hay backend đồng bộ.

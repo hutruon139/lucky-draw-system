@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useRef, useState } from "react";
 import participants from "../data/participants.json";
-import { PRIZES, validateParticipants } from "../logic/generatePrizeQueue.js";
-import { STORAGE_KEY, initialState, restoreState, transition } from "../logic/drawState.js";
+import { validateParticipants } from "../logic/generatePrizeQueue.js";
+import { STORAGE_KEY, currentPrize, initialState, restoreState, transition } from "../logic/drawState.js";
 const PrizeContext = createContext(null);
 validateParticipants(participants);
 export function PrizeFlowManager({ children }) {
@@ -23,7 +23,7 @@ export function PrizeFlowManager({ children }) {
     } catch (error) { setFailure(error.message); return null; }
   };
   return <PrizeContext.Provider value={{ state, act }}>
-    {state.error || failure ? <div role="alert" className="card p-6">{state.error || failure}</div> : children}
+    {state.error || failure ? <div role="alert" className="card m-8 p-6 text-xl">{state.error || failure}</div> : children}
   </PrizeContext.Provider>;
 }
 export function usePrizeFlow() {
@@ -32,11 +32,10 @@ export function usePrizeFlow() {
   const { state, act } = context;
   return {
     phase: state.phase,
-    isSpinning: state.phase === "spinning",
-    complete: state.history.length === PRIZES.length && state.phase === "idle",
+    prize: currentPrize(state),
     pending: state.pending,
     lastPrize: state.history.at(-1) || null,
-    startSpin: () => act("start"), stopSpin: () => act("stop"),
-    finishSpin: () => act("settled"), nextDraw: () => act("next"),
+    start: () => act("start"), stop: () => act("stop"),
+    settled: () => act("settled"), next: () => act("next"),
   };
 }

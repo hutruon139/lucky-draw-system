@@ -1,31 +1,84 @@
-"""Import people from the supplied workbook without editing it."""
-import json, sys, zipfile
+"""Import participants from the "DS CODE BỐC THĂM TRÚNG THƯỞNG" workbook without editing it.
+
+The first sheet has one block per prize list, each starting with a header row in column A
+("GIẢI BA", "GIẢI NHẤT & NHÌ", "GIẢI ĐẶC BIỆT"), then rows: STT | Mã bốc thăm | NPP | NPP hiển thị | Tên.
+"""
+import json
+import re
+import sys
+import unicodedata
 import xml.etree.ElementTree as ET
+import zipfile
 from pathlib import Path
-NS={"m":"http://schemas.openxmlformats.org/spreadsheetml/2006/main"}
-REGIONS={"Miền Bắc":"north","Miền Trung":"central","Đông Nam Bộ":"southeast","Tây Nam Bộ":"southwest"}
-with zipfile.ZipFile(sys.argv[1]) as z:
- strings=["".join(e.itertext()) for e in ET.fromstring(z.read("xl/sharedStrings.xml"))]
- def rows(sheet):
-  for row in ET.fromstring(z.read(f"xl/worksheets/sheet{sheet}.xml")).findall(".//m:sheetData/m:row",NS):
-   values={}
-   for cell in row:
-    v=cell.find("m:v",NS); value=v.text if v is not None else ""
-    if cell.get("t")=="s": value=strings[int(value)]
-    values["".join(filter(str.isalpha,cell.get("r")))]=value.strip()
-   yield values
- people=[]; group=region=None
- for row in rows(3):
-  label=row.get("A","")
-  if label.startswith("Nhóm "): group=int(label.split()[1])
-  elif label in REGIONS: region=REGIONS[label]
-  elif group and row.get("D"): people.append(dict(name=row["D"],company=row["B"],group=group,region=region))
- for sheet,region in [(4,"logistics"),(5,"xnk"),(6,"chemicals")]:
-  for row in rows(sheet):
-   if row.get("A","").isdigit() and row.get("C"):
-    people.append(dict(name=row["C"],company=row["B"],group=3,region=region))
-for i,p in enumerate(people,1): p.update(number=f"{i:03d}",isEligible=True)
-assert len(people)==72
-target=Path(__file__).resolve().parents[1]/"src/data/participants.json"
-target.write_text(json.dumps(people,ensure_ascii=False,indent=2)+"\n")
-print(f"Imported {len(people)} people; mock tickets 001–072")
+
+NS = {"m": "http://schemas.openxmlformats.org/spreadsheetml/2006/main"}
+REL = "{http://schemas.openxmlformats.org/officeDocument/2006/relationships}id"
+MINIMUM = {"third": 15, "main": 2, "special": 1}
+
+
+def clean(text):
+    return " ".join(unicodedata.normalize("NFC", text or "").split())
+
+
+def pool_of(label):
+    label = label.upper()
+    if "ĐẶC BIỆT" in label:
+        return "special"
+    if "NHẤT" in label or "NHÌ" in label:
+        return "main"
+    if label.split()[-1] == "BA":
+        return "third"
+    sys.exit(f"Không nhận ra giải: {label}")
+
+
+def rows(workbook):
+    with zipfile.ZipFile(workbook) as z:
+        names = z.namelist()
+        strings = ["".join(e.itertext()) for e in ET.fromstring(z.read("xl/sharedStrings.xml"))] if "xl/sharedStrings.xml" in names else []
+        first = ET.fromstring(z.read("xl/workbook.xml")).find("m:sheets/m:sheet", NS).get(REL)
+        target = next(r.get("Target") for r in ET.fromstring(z.read("xl/_rels/workbook.xml.rels")) if r.get("Id") == first)
+        sheet = ET.fromstring(z.read("xl/" + target.lstrip("/").removeprefix("xl/")))
+    for row in sheet.findall(".//m:sheetData/m:row", NS):
+        values = {}
+        for cell in row:
+            value = cell.find("m:v", NS)
+            text = value.text if value is not None else ""
+            if cell.get("t") == "s":
+                text = strings[int(text)]
+            elif cell.get("t") == "inlineStr":
+                text = "".join(cell.find("m:is", NS).itertext())
+            values[re.sub(r"\d", "", cell.get("r"))] = clean(text)
+        yield values
+
+
+def main(workbook):
+    people, pool = [], None
+    for row in rows(workbook):
+        label = row.get("A", "")
+        if label.upper().startswith("GIẢI"):
+            pool = pool_of(label)
+        elif pool and label.isdigit() and row.get("B"):
+            code = re.fullmatch(r"Y\s*(\d{1,2})", row["B"], re.IGNORECASE)
+            if not code:
+                sys.exit(f"Mã không hợp lệ: {row['B']}")
+            people.append(dict(number=code.group(1).zfill(2), name=row.get("E", ""),
+                               distributor=row.get("D") or row.get("C", ""), pool=pool, isEligible=True))
+    numbers = [p["number"] for p in people]
+    duplicates = sorted({n for n in numbers if numbers.count(n) > 1})
+    if duplicates:
+        sys.exit(f"Mã bị trùng: {', '.join(duplicates)}")
+    counts = {name: sum(p["pool"] == name for p in people) for name in MINIMUM}
+    if any(counts[name] < minimum for name, minimum in MINIMUM.items()):
+        sys.exit(f"Không đủ người cho số giải: {counts}")
+    unnamed = [p["number"] for p in people if not p["name"]]
+    if unnamed:
+        sys.exit(f"Thiếu tên: {', '.join(unnamed)}")
+    target = Path(__file__).resolve().parents[1] / "src/data/participants.json"
+    target.write_text(json.dumps(people, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    print(f"Imported {len(people)} people: giải ba {counts['third']}, nhất & nhì {counts['main']}, đặc biệt {counts['special']}")
+
+
+if __name__ == "__main__":
+    if len(sys.argv) != 2:
+        sys.exit("Usage: python scripts/import_participants.py /path/to/data.xlsx")
+    main(sys.argv[1])

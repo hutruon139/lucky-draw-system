@@ -1,2 +1,2 @@
 import { zeroPad } from "./utils.js";
-export function formatTicket(number) { return zeroPad(number, 3); }
+export function formatTicket(number) { return zeroPad(number, 2); }

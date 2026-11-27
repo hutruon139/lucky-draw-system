@@ -2,28 +2,45 @@ import React, { useEffect, useLayoutEffect, useRef } from "react";
 import { ACCELERATION_MS, spinDistance, stoppingPlan, stoppingPosition } from "../logic/reelMotion.js";
 
 const DIGITS = Array.from({ length: 20 }, (_, i) => i % 10);
-export default function Reel({ targetDigit = 0, spinning, index = 0, onSettled }) {
+// Vertical motion blur in design px per (px/ms) of reel speed, capped so digits stay readable as streaks.
+const BLUR_PER_SPEED = 3.5;
+const MAX_BLUR = 16;
+export default function Reel({ targetDigit = 0, spinning, index = 0, left, onSettled }) {
   const stripRef = useRef(null);
+  const windowRef = useRef(null);
+  const blurRef = useRef(null);
   const command = useRef({ spinning, targetDigit });
   const callback = useRef(onSettled);
   const wake = useRef(null);
   command.current = { spinning, targetDigit };
   callback.current = onSettled;
+  const filterId = `reel-blur-${index}`;
 
   useLayoutEffect(() => {
     const node = stripRef.current;
-    let frame = null, running = false, position = 0, startPosition = 0;
+    // Offset each reel so the two digits never spin in lockstep.
+    let frame = null, running = false, position = index * 5, startPosition = 0;
     let started = null, stop = null, stopStarted = 0;
+    let lastPosition = position, lastTime = 0, blur = 0;
     let height = node.firstElementChild.offsetHeight;
     const paint = () => {
       const wrapped = ((position % 10) + 10) % 10;
       node.style.transform = `translate3d(0, ${-wrapped * height}px, 0)`;
+    };
+    const setBlur = value => {
+      const next = Math.round(value * 2) / 2;
+      if (next === blur) return;
+      blur = next;
+      blurRef.current.setAttribute("stdDeviation", `0 ${blur}`);
+      windowRef.current.style.filter = blur ? `url(#${filterId})` : "none";
     };
     const resize = new ResizeObserver(() => {
       height = node.firstElementChild.offsetHeight;
       paint();
     });
     resize.observe(node.firstElementChild);
+    blurRef.current.setAttribute("stdDeviation", "0 0");
+    windowRef.current.style.filter = "none";
     const tick = now => {
       frame = null;
       if (!running) return;
@@ -40,12 +57,16 @@ export default function Reel({ targetDigit = 0, spinning, index = 0, onSettled }
         if (now - stopStarted >= stop.duration) {
           position = stop.end;
           paint();
+          setBlur(0);
           node.style.willChange = "auto";
           running = false;
           callback.current?.(index);
           return;
         }
       }
+      setBlur(Math.min(MAX_BLUR, BLUR_PER_SPEED * Math.abs(position - lastPosition) * height / Math.max(1, now - lastTime)));
+      lastPosition = position;
+      lastTime = now;
       paint();
       frame = requestAnimationFrame(tick);
     };
@@ -54,7 +75,8 @@ export default function Reel({ targetDigit = 0, spinning, index = 0, onSettled }
       if (command.current.spinning && !running) {
         running = true;
         started = performance.now();
-        startPosition = position;
+        startPosition = lastPosition = position;
+        lastTime = started;
         stop = null;
         node.style.willChange = "transform";
       }
@@ -68,33 +90,20 @@ export default function Reel({ targetDigit = 0, spinning, index = 0, onSettled }
       resize.disconnect();
       wake.current = null;
     };
-  }, [index]);
+  }, [index, filterId]);
 
   useEffect(() => { wake.current?.(); }, [spinning]);
 
-  return (
-    <div
-      className="reel-window border-[8px] border-[#86d3cc] h-[290px] xl:h-[400px] w-[200px] xl:w-[250px] relative overflow-hidden rounded-[18px] bg-gradient-to-b from-white to-slate-100 shadow-[inset_0_6px_12px_rgba(255,255,255,0.6),inset_0_-10px_16px_rgba(0,0,0,0.18)] "
-
-    >
-      <div ref={stripRef} className="reel-strip font-[ReelDisplayA]">
-        {DIGITS.map((d, idx) => (
-          <div
-            key={`${d}-${idx}`}
-            className="
-  reel-item h-[270px] xl:h-[400px]
-  flex items-center justify-center
-  text-[153px] xl:text-[280px] font-black leading-none
-  text-transparent bg-clip-text
-  bg-[linear-gradient(to_bottom,#f0d4a1,#c69c6b)]
-  drop-shadow-[0_4px_8px_rgba(0,0,0,0.8)]
-"
-          >
-            {d}
-          </div>
-        ))}
+  return <>
+    <svg className="reel-filter" aria-hidden="true">
+      <filter id={filterId} x="0" y="-20%" width="100%" height="140%" colorInterpolationFilters="sRGB">
+        <feGaussianBlur ref={blurRef} stdDeviation="0 0" />
+      </filter>
+    </svg>
+    <div ref={windowRef} className="reel-window" style={{ left }}>
+      <div ref={stripRef} className="reel-strip">
+        {DIGITS.map((d, idx) => <div key={`${d}-${idx}`} className="reel-item digit">{d}</div>)}
       </div>
-      <div className="pointer-events-none absolute inset-0 rounded-[18px] bg-gradient-to-b from-white/55 via-transparent to-slate-900/10" />
     </div>
-  );
+  </>;
 }
