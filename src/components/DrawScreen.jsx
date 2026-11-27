@@ -3,21 +3,22 @@ import { usePrizeFlow } from "./PrizeFlowManager";
 import Stage from "./Stage";
 import SlotMachine from "./SlotMachine";
 import FitText from "./FitText";
-import { preloadAssets, screenImage } from "../screens";
+import { SCREEN_IMAGES, screenImage } from "../screens";
 import { formatTicket } from "../logic/spin";
 
 const HOLD_MS = 1500;
 // Ignore input right after a screen change so a double click or key repeat cannot skip a screen.
 const INPUT_GUARD_MS = 800;
 const KEYS = [" ", "Enter", "ArrowRight", "PageDown"];
+const DIGIT_FONT = '700 100px "Gotham Rounded"';
 // Button positions on the designer's 2816x1536 screens.
 const START_BUTTON = { left: 1090, top: 1352, width: 640, height: 158 };
 const CONTINUE_BUTTON = { left: 1165, top: 1340, width: 486, height: 140 };
 
 export default function DrawScreen() {
   const { phase, prize, pending, lastPrize, start, stop, settled, next } = usePrizeFlow();
+  const [ready, setReady] = useState(false);
   const [holding, setHolding] = useState(false);
-  useEffect(preloadAssets, []);
   useEffect(() => {
     if (!holding) return;
     const timer = setTimeout(() => setHolding(false), HOLD_MS);
@@ -30,11 +31,11 @@ export default function DrawScreen() {
   useEffect(() => { shownAt.current = performance.now(); }, [screen, phase]);
 
   const advance = useCallback(() => {
-    if (performance.now() - shownAt.current < INPUT_GUARD_MS) return;
+    if (!ready || performance.now() - shownAt.current < INPUT_GUARD_MS) return;
     if (screen === "standby") start();
     else if (screen === "spin") { if (phase === "spinning") stop(); }
     else next();
-  }, [screen, phase, start, stop, next]);
+  }, [ready, screen, phase, start, stop, next]);
 
   useEffect(() => {
     const onKey = event => {
@@ -52,14 +53,32 @@ export default function DrawScreen() {
 
   return (
     <Stage onClick={hasButton ? undefined : advance}>
-      <img src={screenImage(prize, screen)} alt="" decoding="sync" draggable={false} className="screen-image" />
-      {screen === "standby" && <Hotspot box={START_BUTTON} label="Bắt đầu" onClick={advance} />}
-      {screen === "spin" && <SlotMachine number={(pending ?? lastPrize).participant.number}
-        isSpinning={phase === "spinning"} onSettled={onSettled} />}
-      {screen === "announce" && <Announcement participant={lastPrize.participant} />}
-      {screen === "announce" && prize === "third" && <Hotspot box={CONTINUE_BUTTON} label="Tiếp tục" onClick={advance} />}
+      <Backgrounds current={ready && screenImage(prize, screen)} onReady={setReady} />
+      {ready && <>
+        {screen === "standby" && <Hotspot box={START_BUTTON} label="Bắt đầu" onClick={advance} />}
+        {screen === "spin" && <SlotMachine number={(pending ?? lastPrize).participant.number}
+          isSpinning={phase === "spinning"} onSettled={onSettled} />}
+        {screen === "announce" && <Announcement participant={lastPrize.participant} />}
+        {screen === "announce" && prize === "third" && <Hotspot box={CONTINUE_BUTTON} label="Tiếp tục" onClick={advance} />}
+      </>}
     </Stage>
   );
+}
+
+// Every screen image stays mounted and a screen change only flips visibility. Swapping one <img>'s
+// src can reload the file asynchronously, which shows the new numbers on top of the old background.
+function Backgrounds({ current, onReady }) {
+  const layer = useRef(null);
+  useEffect(() => {
+    let active = true;
+    const images = [...layer.current.children].map(image => image.decode());
+    Promise.allSettled([...images, document.fonts?.load(DIGIT_FONT)]).then(() => { if (active) onReady(true); });
+    return () => { active = false; };
+  }, [onReady]);
+  return <div ref={layer}>
+    {SCREEN_IMAGES.map(src => <img key={src} src={src} alt="" decoding="sync" draggable={false}
+      className="screen-image" style={{ visibility: src === current ? "visible" : "hidden" }} />)}
+  </div>;
 }
 
 function Announcement({ participant }) {

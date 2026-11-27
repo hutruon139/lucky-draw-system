@@ -46,7 +46,7 @@ Script xóa chữ mẫu trên màn Quay số và Công bố theo vị trí trong
 | Công bố | Giải ba: bấm **Tiếp tục** để quay luôn lượt kế tiếp (sau người thứ 15 sang Trao giải). Giải khác: bấm chuột hoặc phím để sang Trao giải |
 | Trao giải | Bấm chuột hoặc phím để sang Stand by của giải tiếp theo |
 
-Remote trình chiếu thường gửi PageDown / → nên dùng được. Sau mỗi lần đổi màn hình, app bỏ qua thao tác trong 0,8 giây để tránh bấm đúp. Sau khi hai ô số dừng, giữ mã 1,5 giây rồi công bố. Animation dùng requestAnimationFrame, vị trí theo thời gian và transform; thay đổi kích thước không thay đổi mã đích.
+Remote trình chiếu thường gửi PageDown / → nên dùng được. Khi mở trang, màn hình đen tới khi tải xong toàn bộ ảnh nền và font; mọi ảnh nền được giữ sẵn nên khi đổi màn, ảnh nền và số/chữ hiện cùng lúc. Sau mỗi lần đổi màn hình, app bỏ qua thao tác trong 0,8 giây để tránh bấm đúp. Sau khi hai ô số dừng, giữ mã 1,5 giây rồi công bố. Animation dùng requestAnimationFrame, vị trí theo thời gian và transform; thay đổi kích thước không thay đổi mã đích.
 
 Chỉ vận hành bằng một tab trình duyệt trên laptop (F11 để toàn màn hình) rồi mirror màn hình. Phiên được lưu tại localStorage `lucky_draw_2026_v2`; reload khi đang quay sẽ về Stand by với đúng người đã chọn, reload sau khi dừng sẽ khôi phục người trúng. Không có phím reset. Để chạy thử lại, đóng các tab khác và xóa đúng key này trong DevTools; không xóa khi đang chạy sự kiện.
 
