@@ -2,8 +2,9 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import { PRIZES, getEligiblePool, selectDraw, validateParticipants } from "../src/logic/generatePrizeQueue.js";
-import { initialState, transition, restoreState, currentPrize } from "../src/logic/drawState.js";
+import { STORAGE_KEY, initialState, transition, restoreState, currentPrize } from "../src/logic/drawState.js";
 import { SPEED, stoppingPlan, stoppingPosition } from "../src/logic/reelMotion.js";
+import { hasResults, isResetKey, resetStoredState } from "../src/logic/reset.js";
 
 const people = JSON.parse(fs.readFileSync(new URL("../src/data/participants.json", import.meta.url)));
 const first = () => 0;
@@ -127,4 +128,39 @@ test("every digit and stagger stops forward at the exact digit with continuous i
       }
     }
   }
+});
+
+function memoryStorage(entries = {}) {
+  const data = new Map(Object.entries(entries));
+  return { getItem: key => data.get(key) ?? null, setItem: (key, value) => data.set(key, String(value)),
+    removeItem: key => data.delete(key) };
+}
+
+test("reset clears only the saved session, including invalid data, and restores the initial state", () => {
+  const history = drawUntil(16);
+  for (const saved of [JSON.stringify({ history, pending: null, phase: "award" }), "{"]) {
+    const storage = memoryStorage({ [STORAGE_KEY]: saved, other: "keep" });
+    assert.deepEqual(resetStoredState(storage), initialState());
+    assert.equal(storage.getItem(STORAGE_KEY), null);
+    assert.equal(storage.getItem("other"), "keep");
+    assert.deepEqual(restoreState(storage.getItem(STORAGE_KEY), people), initialState());
+  }
+  assert.equal(hasResults(initialState()), false);
+  assert.equal(hasResults(transition(initialState(), "start", people, first)), true);
+  assert.equal(hasResults({ history, pending: null, phase: "award" }), true);
+});
+
+test("reset surfaces storage failures instead of pretending the session was cleared", () => {
+  const broken = { ...memoryStorage(), removeItem: () => { throw new Error("denied"); } };
+  assert.throws(() => resetStoredState(broken), /denied/);
+  const stuck = { ...memoryStorage({ [STORAGE_KEY]: "{}" }), removeItem: () => {} };
+  assert.throws(() => resetStoredState(stuck), /Không xóa được/);
+});
+
+test("only a plain, non-repeated R key triggers reset", () => {
+  assert.ok(isResetKey({ key: "r" }));
+  assert.ok(isResetKey({ key: "R" }));
+  for (const extra of [{ repeat: true }, { ctrlKey: true }, { metaKey: true }, { altKey: true }, { isComposing: true }])
+    assert.equal(isResetKey({ key: "r", ...extra }), false);
+  assert.equal(isResetKey({ key: "Enter" }), false);
 });
