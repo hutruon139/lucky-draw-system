@@ -57,13 +57,16 @@ body {
   transition: box-shadow 150ms;
 }
 
-.hotspot:hover {
+.hotspot:not(:disabled):hover,
+.hotspot:focus-visible {
   box-shadow: 0 0 48px rgba(255, 226, 140, 0.55);
 }
 
-.hotspot:active {
+.hotspot:not(:disabled):active {
   box-shadow: 0 0 64px rgba(255, 226, 140, 0.85);
 }
+
+.hotspot:disabled { cursor: default; }
 
 .digit {
   font-family: "Gotham Rounded", sans-serif;

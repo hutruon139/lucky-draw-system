@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
-import { PRIZES, getEligiblePool, selectDraw, validateParticipants } from "../src/logic/generatePrizeQueue.js";
+import { PRIZES, THIRD_QUOTAS, getEligiblePool, selectDraw, validateParticipants } from "../src/logic/generatePrizeQueue.js";
 import { STORAGE_KEY, initialState, transition, restoreState, currentPrize } from "../src/logic/drawState.js";
 import { SPEED, stoppingPlan, stoppingPosition } from "../src/logic/reelMotion.js";
 import { hasResults, isResetKey, resetStoredState } from "../src/logic/reset.js";
@@ -35,6 +35,28 @@ test("first prize draws from the same nine people as second prize, minus the sec
   assert.ok(pool.every(p => p.pool === "main" && p.number !== history[15].participant.number));
 });
 
+test("confirmed Southwest guests and all seven regional pools have enough candidates", () => {
+  const counts = Object.fromEntries(Object.keys(THIRD_QUOTAS).map(region => [region,
+    people.filter(p => p.pool === "third" && p.region === region).length]));
+  assert.deepEqual(counts, { north: 16, central: 5, southeast: 4, southwest: 2, logistics: 10, xnk: 6, chemicals: 5 });
+  const southwest = people.filter(p => p.pool === "third" && p.region === "southwest");
+  assert.deepEqual(southwest.map(p => p.number), ["34", "35"]);
+  assert.ok(southwest.every(p => p.distributor.endsWith("Khu vực Tây Nam Bộ")));
+  assert.throws(() => validateParticipants(people.map(p => p.number === "34" || p.number === "35" ? { ...p, isEligible: false } : p)), /southwest/);
+  assert.throws(() => validateParticipants(people.map(p => p.number === "34" ? { ...p, region: "unknown" } : p)), /vùng\/khối/);
+});
+
+test("a full region is immediately excluded; a Southwest winner removes the other Southwest guest", () => {
+  const southwest = people.find(p => p.number === "34");
+  const history = [{ prizeType: "third", participant: southwest }];
+  assert.ok(getEligiblePool(people, history).every(p => p.region !== "southwest"));
+  for (const region of Object.keys(THIRD_QUOTAS)) {
+    const pool = people.filter(p => p.pool === "third" && p.region === region);
+    const history = pool.slice(0, THIRD_QUOTAS[region]).map(participant => ({ prizeType: "third", participant }));
+    assert.ok(getEligiblePool(people, history).every(p => p.region !== region));
+  }
+});
+
 test("1000 seeded full draws keep prize order, lists and no repeat winners", () => {
   let seed = 2026;
   const choose = length => { seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0; return Math.floor(seed / 2 ** 32 * length); };
@@ -48,6 +70,11 @@ test("1000 seeded full draws keep prize order, lists and no repeat winners", () 
       history.push(draw);
     }
     assert.equal(new Set(history.map(d => d.participant.number)).size, 18);
+    const regionCounts = history.slice(0, 15).reduce((counts, d) => {
+      counts[d.participant.region] = (counts[d.participant.region] || 0) + 1;
+      return counts;
+    }, {});
+    assert.deepEqual(regionCounts, THIRD_QUOTAS);
     assert.equal(selectDraw(people, history), null);
   }
 });
@@ -110,6 +137,9 @@ test("incomplete or tampered state fails instead of silently resetting the event
   assert.throws(() => restoreState(JSON.stringify({ history: drawUntil(PRIZES.length), phase: "standby" }), people));
   history[1] = history[0];
   assert.throws(() => restoreState(JSON.stringify({ history, phase: "winner" }), people));
+  const overflow = people.filter(p => p.pool === "third" && p.region === "central")
+    .slice(0, 4).map(participant => ({ prizeType: "third", participant }));
+  assert.throws(() => restoreState(JSON.stringify({ history: overflow, phase: "winner" }), people), /Lịch sử/);
 });
 
 test("every digit and stagger stops forward at the exact digit with continuous initial velocity", () => {
