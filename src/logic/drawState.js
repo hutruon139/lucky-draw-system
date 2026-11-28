@@ -1,5 +1,6 @@
 import { selectDraw, getEligiblePool, PRIZES } from "./generatePrizeQueue.js";
-export const STORAGE_KEY = "lucky_draw_2026_v2";
+// Keep sessions from the former unrestricted draw intact under v2, but never reuse them here.
+export const STORAGE_KEY = "lucky_draw_2026_v3";
 const PHASES = ["standby", "spinning", "stopping", "winner", "award"];
 export const initialState = () => ({ history: [], pending: null, phase: "standby" });
 const prizeFinished = history => history.length > 0 && PRIZES[history.length] !== history.at(-1).prizeType;

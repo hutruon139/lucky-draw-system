@@ -14,6 +14,33 @@ from pathlib import Path
 NS = {"m": "http://schemas.openxmlformats.org/spreadsheetml/2006/main"}
 REL = "{http://schemas.openxmlformats.org/officeDocument/2006/relationships}id"
 MINIMUM = {"third": 15, "main": 2, "special": 1}
+REGIONS = {"Miền Bắc": "north", "Miền Trung": "central",
+           "Đông Nam Bộ": "southeast", "Tây Nam Bộ": "southwest"}
+# Client confirmed on 2026-11-28: the new workbook mislabeled these two NPPs as North.
+SOUTHWEST_CODES = {"34", "35"}  # Hữu Thành, Tân Thành
+
+
+def participant_from_row(row, pool):
+    code = re.fullmatch(r"Y\s*(\d{1,2})", row["B"], re.IGNORECASE)
+    if not code:
+        raise ValueError(f"Mã không hợp lệ: {row['B']}")
+    number = code.group(1).zfill(2)
+    distributor = row.get("D") or row.get("C", "")
+    if number in SOUTHWEST_CODES and pool == "third":
+        distributor = distributor.replace("Khu vực Miền Bắc", "Khu vực Tây Nam Bộ")
+        region = "southwest"
+    elif pool == "third" and 52 <= int(number) <= 61:
+        region = "logistics"
+    elif pool == "third" and 62 <= int(number) <= 67:
+        region = "xnk"
+    elif pool == "third" and 68 <= int(number) <= 72:
+        region = "chemicals"
+    else:
+        region = next((value for label, value in REGIONS.items() if f"Khu vực {label}" in distributor), None)
+    if not region:
+        raise ValueError(f"Không xác định được vùng/khối cho mã Y{number}")
+    return dict(number=number, name=row.get("E", ""), distributor=distributor,
+                pool=pool, region=region, isEligible=True)
 
 
 def clean(text):
@@ -58,11 +85,7 @@ def main(workbook):
         if label.upper().startswith("GIẢI"):
             pool = pool_of(label)
         elif pool and label.isdigit() and row.get("B"):
-            code = re.fullmatch(r"Y\s*(\d{1,2})", row["B"], re.IGNORECASE)
-            if not code:
-                sys.exit(f"Mã không hợp lệ: {row['B']}")
-            people.append(dict(number=code.group(1).zfill(2), name=row.get("E", ""),
-                               distributor=row.get("D") or row.get("C", ""), pool=pool, isEligible=True))
+            people.append(participant_from_row(row, pool))
     numbers = [p["number"] for p in people]
     duplicates = sorted({n for n in numbers if numbers.count(n) > 1})
     if duplicates:
