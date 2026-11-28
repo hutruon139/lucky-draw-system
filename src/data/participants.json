@@ -282,7 +282,7 @@
   {
     "number": "60",
     "name": "Bà Hà Thị Tuyết Lan",
-    "distributor": "Công ty bảo hiểm PVI HCM",
+    "distributor": "Công ty Bảo hiểm PVI Hồ Chí Minh",
     "pool": "third",
     "region": "logistics",
     "isEligible": true
@@ -298,7 +298,7 @@
   {
     "number": "62",
     "name": "Ông Lee Yong Seok",
-    "distributor": "Samsung C&T",
+    "distributor": "Công ty Samsung C&T",
     "pool": "third",
     "region": "xnk",
     "isEligible": true
@@ -306,7 +306,7 @@
   {
     "number": "63",
     "name": "Ông Injoon Song",
-    "distributor": "Young-Inh Corp.",
+    "distributor": "Công ty Young-Inh Corp.",
     "pool": "third",
     "region": "xnk",
     "isEligible": true
@@ -314,7 +314,7 @@
   {
     "number": "64",
     "name": "Bà Trần Thị Mai Lan",
-    "distributor": "Pacific Rim Company",
+    "distributor": "Công ty Pacific Rim Company",
     "pool": "third",
     "region": "xnk",
     "isEligible": true
@@ -322,7 +322,7 @@
   {
     "number": "65",
     "name": "Bà Trần Thanh Linh My",
-    "distributor": "Liven Nutrients",
+    "distributor": "Công ty Liven Nutrients",
     "pool": "third",
     "region": "xnk",
     "isEligible": true
@@ -330,7 +330,7 @@
   {
     "number": "66",
     "name": "Bà Valency",
-    "distributor": "HANWA CO., LTD.",
+    "distributor": "Công ty HANWA CO., LTD.",
     "pool": "third",
     "region": "xnk",
     "isEligible": true
@@ -338,7 +338,7 @@
   {
     "number": "67",
     "name": "Bà Đặng Thy Mịn",
-    "distributor": "HANWA VIET NAM CO., LTD.",
+    "distributor": "Công ty HANWA VIETNAM CO., LTD.",
     "pool": "third",
     "region": "xnk",
     "isEligible": true
@@ -410,7 +410,7 @@
   {
     "number": "13",
     "name": "Ông Lưu Hữu Hải",
-    "distributor": "NPP VTNN II Đà Nẵng - Khu vực Miền Trung",
+    "distributor": "NPP Vật tư Nông nghiệp II Đà Nẵng - Khu vực Miền Trung",
     "pool": "main",
     "region": "central",
     "isEligible": true
